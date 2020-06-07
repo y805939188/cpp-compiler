@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/lexer.dir/src/lexer/lexer.cpp.o"
-  "CMakeFiles/lexer.dir/src/lexer/token.cpp.o"
   "liblexer.a"
   "liblexer.pdb"
 )

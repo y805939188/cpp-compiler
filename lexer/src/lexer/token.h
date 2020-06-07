@@ -26,6 +26,7 @@ class Token {
     bool isVariable();
     bool isScalar();
     void toString();
+    static Token& makeVarOrKeyword(ifstream& fs);
 };
 
 #endif

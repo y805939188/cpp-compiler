@@ -1,29 +1,20 @@
-
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  // 使用 IntelliSense 了解相关属性。 
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "(gdb) Launch",
-      "type": "cppdbg",
+      "type": "lldb",
       "request": "launch",
-      // Resolved by CMake Tools:
-      "program": "${command:cmake.launchTargetPath}",
+      "name": "Debug",
+      // workspaceFolder 表示当前打开的根目录
+      // fileBasenameNoExtension 表示当前被激活的文件不带后缀的格式
+      // 比如当前正鼠标聚焦在 a.cpp 那fileBasenameNoExtension就是a
+      "program": "${workspaceFolder}/output/${fileBasenameNoExtension}", // 对应要调试那个文件
       "args": [],
-      "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
-      "environment": [],
-      "externalConsole": true,
-      "MIMode": "gdb",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ]
+      "preLaunchTask": "compile" // 会根据这个label把可执行文件给build出来
     }
   ]
 }

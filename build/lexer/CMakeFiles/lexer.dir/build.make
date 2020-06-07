@@ -77,22 +77,9 @@ include lexer/CMakeFiles/lexer.dir/progress.make
 # Include the compile flags for this target's objects.
 include lexer/CMakeFiles/lexer.dir/flags.make
 
-lexer/CMakeFiles/lexer.dir/src/lexer/token.cpp.o: lexer/CMakeFiles/lexer.dir/flags.make
-lexer/CMakeFiles/lexer.dir/src/lexer/token.cpp.o: ../lexer/src/lexer/token.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object lexer/CMakeFiles/lexer.dir/src/lexer/token.cpp.o"
-	cd /Users/4paradigm/Desktop/cpp-compiler/build/lexer && /usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lexer.dir/src/lexer/token.cpp.o -c /Users/4paradigm/Desktop/cpp-compiler/lexer/src/lexer/token.cpp
-
-lexer/CMakeFiles/lexer.dir/src/lexer/token.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lexer.dir/src/lexer/token.cpp.i"
-	cd /Users/4paradigm/Desktop/cpp-compiler/build/lexer && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/4paradigm/Desktop/cpp-compiler/lexer/src/lexer/token.cpp > CMakeFiles/lexer.dir/src/lexer/token.cpp.i
-
-lexer/CMakeFiles/lexer.dir/src/lexer/token.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lexer.dir/src/lexer/token.cpp.s"
-	cd /Users/4paradigm/Desktop/cpp-compiler/build/lexer && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/4paradigm/Desktop/cpp-compiler/lexer/src/lexer/token.cpp -o CMakeFiles/lexer.dir/src/lexer/token.cpp.s
-
 lexer/CMakeFiles/lexer.dir/src/lexer/lexer.cpp.o: lexer/CMakeFiles/lexer.dir/flags.make
 lexer/CMakeFiles/lexer.dir/src/lexer/lexer.cpp.o: ../lexer/src/lexer/lexer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object lexer/CMakeFiles/lexer.dir/src/lexer/lexer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object lexer/CMakeFiles/lexer.dir/src/lexer/lexer.cpp.o"
 	cd /Users/4paradigm/Desktop/cpp-compiler/build/lexer && /usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lexer.dir/src/lexer/lexer.cpp.o -c /Users/4paradigm/Desktop/cpp-compiler/lexer/src/lexer/lexer.cpp
 
 lexer/CMakeFiles/lexer.dir/src/lexer/lexer.cpp.i: cmake_force
@@ -105,17 +92,15 @@ lexer/CMakeFiles/lexer.dir/src/lexer/lexer.cpp.s: cmake_force
 
 # Object files for target lexer
 lexer_OBJECTS = \
-"CMakeFiles/lexer.dir/src/lexer/token.cpp.o" \
 "CMakeFiles/lexer.dir/src/lexer/lexer.cpp.o"
 
 # External object files for target lexer
 lexer_EXTERNAL_OBJECTS =
 
-lexer/liblexer.a: lexer/CMakeFiles/lexer.dir/src/lexer/token.cpp.o
 lexer/liblexer.a: lexer/CMakeFiles/lexer.dir/src/lexer/lexer.cpp.o
 lexer/liblexer.a: lexer/CMakeFiles/lexer.dir/build.make
 lexer/liblexer.a: lexer/CMakeFiles/lexer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library liblexer.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library liblexer.a"
 	cd /Users/4paradigm/Desktop/cpp-compiler/build/lexer && $(CMAKE_COMMAND) -P CMakeFiles/lexer.dir/cmake_clean_target.cmake
 	cd /Users/4paradigm/Desktop/cpp-compiler/build/lexer && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lexer.dir/link.txt --verbose=$(VERBOSE)
 

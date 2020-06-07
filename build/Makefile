@@ -131,6 +131,45 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named test-compiler
+
+# Build rule for target.
+test-compiler: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test-compiler
+.PHONY : test-compiler
+
+# fast build rule for target.
+test-compiler/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test-compiler.dir/build.make test/CMakeFiles/test-compiler.dir/build
+.PHONY : test-compiler/fast
+
+#=============================================================================
+# Target rules for targets named keywords
+
+# Build rule for target.
+keywords: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 keywords
+.PHONY : keywords
+
+# fast build rule for target.
+keywords/fast:
+	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/keywords.dir/build.make lexer/CMakeFiles/keywords.dir/build
+.PHONY : keywords/fast
+
+#=============================================================================
+# Target rules for targets named token
+
+# Build rule for target.
+token: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 token
+.PHONY : token
+
+# fast build rule for target.
+token/fast:
+	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/token.dir/build.make lexer/CMakeFiles/token.dir/build
+.PHONY : token/fast
+
+#=============================================================================
 # Target rules for targets named lexer
 
 # Build rule for target.
@@ -151,7 +190,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... keywords"
 	@echo "... lexer"
+	@echo "... test-compiler"
+	@echo "... token"
 .PHONY : help
 
 

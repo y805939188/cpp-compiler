@@ -131,6 +131,36 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+lexer/CMakeFiles/keywords.dir/rule:
+	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lexer/CMakeFiles/keywords.dir/rule
+.PHONY : lexer/CMakeFiles/keywords.dir/rule
+
+# Convenience name for target.
+keywords: lexer/CMakeFiles/keywords.dir/rule
+
+.PHONY : keywords
+
+# fast build rule for target.
+keywords/fast:
+	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/keywords.dir/build.make lexer/CMakeFiles/keywords.dir/build
+.PHONY : keywords/fast
+
+# Convenience name for target.
+lexer/CMakeFiles/token.dir/rule:
+	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lexer/CMakeFiles/token.dir/rule
+.PHONY : lexer/CMakeFiles/token.dir/rule
+
+# Convenience name for target.
+token: lexer/CMakeFiles/token.dir/rule
+
+.PHONY : token
+
+# fast build rule for target.
+token/fast:
+	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/token.dir/build.make lexer/CMakeFiles/token.dir/build
+.PHONY : token/fast
+
+# Convenience name for target.
 lexer/CMakeFiles/lexer.dir/rule:
 	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lexer/CMakeFiles/lexer.dir/rule
 .PHONY : lexer/CMakeFiles/lexer.dir/rule
@@ -144,6 +174,33 @@ lexer: lexer/CMakeFiles/lexer.dir/rule
 lexer/fast:
 	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/lexer.dir/build.make lexer/CMakeFiles/lexer.dir/build
 .PHONY : lexer/fast
+
+src/lexer/keywords.o: src/lexer/keywords.cpp.o
+
+.PHONY : src/lexer/keywords.o
+
+# target to build an object file
+src/lexer/keywords.cpp.o:
+	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/keywords.dir/build.make lexer/CMakeFiles/keywords.dir/src/lexer/keywords.cpp.o
+.PHONY : src/lexer/keywords.cpp.o
+
+src/lexer/keywords.i: src/lexer/keywords.cpp.i
+
+.PHONY : src/lexer/keywords.i
+
+# target to preprocess a source file
+src/lexer/keywords.cpp.i:
+	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/keywords.dir/build.make lexer/CMakeFiles/keywords.dir/src/lexer/keywords.cpp.i
+.PHONY : src/lexer/keywords.cpp.i
+
+src/lexer/keywords.s: src/lexer/keywords.cpp.s
+
+.PHONY : src/lexer/keywords.s
+
+# target to generate assembly for a file
+src/lexer/keywords.cpp.s:
+	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/keywords.dir/build.make lexer/CMakeFiles/keywords.dir/src/lexer/keywords.cpp.s
+.PHONY : src/lexer/keywords.cpp.s
 
 src/lexer/lexer.o: src/lexer/lexer.cpp.o
 
@@ -178,7 +235,7 @@ src/lexer/token.o: src/lexer/token.cpp.o
 
 # target to build an object file
 src/lexer/token.cpp.o:
-	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/lexer.dir/build.make lexer/CMakeFiles/lexer.dir/src/lexer/token.cpp.o
+	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/token.dir/build.make lexer/CMakeFiles/token.dir/src/lexer/token.cpp.o
 .PHONY : src/lexer/token.cpp.o
 
 src/lexer/token.i: src/lexer/token.cpp.i
@@ -187,7 +244,7 @@ src/lexer/token.i: src/lexer/token.cpp.i
 
 # target to preprocess a source file
 src/lexer/token.cpp.i:
-	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/lexer.dir/build.make lexer/CMakeFiles/lexer.dir/src/lexer/token.cpp.i
+	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/token.dir/build.make lexer/CMakeFiles/token.dir/src/lexer/token.cpp.i
 .PHONY : src/lexer/token.cpp.i
 
 src/lexer/token.s: src/lexer/token.cpp.s
@@ -196,7 +253,7 @@ src/lexer/token.s: src/lexer/token.cpp.s
 
 # target to generate assembly for a file
 src/lexer/token.cpp.s:
-	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/lexer.dir/build.make lexer/CMakeFiles/lexer.dir/src/lexer/token.cpp.s
+	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/token.dir/build.make lexer/CMakeFiles/token.dir/src/lexer/token.cpp.s
 .PHONY : src/lexer/token.cpp.s
 
 # Help Target
@@ -207,7 +264,12 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... keywords"
 	@echo "... lexer"
+	@echo "... token"
+	@echo "... src/lexer/keywords.o"
+	@echo "... src/lexer/keywords.i"
+	@echo "... src/lexer/keywords.s"
 	@echo "... src/lexer/lexer.o"
 	@echo "... src/lexer/lexer.i"
 	@echo "... src/lexer/lexer.s"

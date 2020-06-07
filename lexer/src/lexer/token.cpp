@@ -35,7 +35,6 @@ Token& Token::makeVarOrKeyword(ifstream& fs) {
 
   if (str == "true" || str == "false") {
     Token t(TokenType::BOOLEAN, str);
-    cout << " 进到这里来了  " << str << endl; 
     return t;
   }
 

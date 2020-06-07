@@ -1,3 +1,8 @@
+/**
+ * 该文件用来随便测试点东西
+ * 可以直接用vscode的task执行
+ */
+
 #include <iostream>
 #include <istream>
 #include <sstream>

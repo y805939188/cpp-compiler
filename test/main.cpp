@@ -8,19 +8,18 @@ using namespace std;
  */
 
 int main(void) {
-  cout << "ding-test" << endl;
   ifstream fs;
+
+  /**
+   * 这里open 会直接在根目录下找 不会找相对路径
+   * 有待改善
+   */
   fs.open("./ding.test.txt");
-  cout << "hahahah" << endl;
-  Token::makeVarOrKeyword(fs);
+  Token token = Token::makeVarOrKeyword(fs);
+  token.toString();
   // Token to(TokenType::BOOLEAN, "true");
   // to.toString();
-  // Token::hehe();
-
-  
 
   fs.close();
-  // hello::say_hello();
-  // cout << "由于main.cpp链接了say-hello 所以这里面也可以用这个宏" << SAY_HELLO_VERSION << endl;
   return 0;
 }

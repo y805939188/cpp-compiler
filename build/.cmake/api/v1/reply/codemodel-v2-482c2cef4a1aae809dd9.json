@@ -81,14 +81,14 @@
 				{
 					"directoryIndex" : 2,
 					"id" : "lexer::@b843ee4d2567e712e3c6",
-					"jsonFile" : "target-lexer-Debug-5f9ce7e15472213ab523.json",
+					"jsonFile" : "target-lexer-Debug-8688405fca0f277af769.json",
 					"name" : "lexer",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 1,
 					"id" : "test-compiler::@36f028580bb02cc8272a",
-					"jsonFile" : "target-test-compiler-Debug-92f8464d18fda80c2190.json",
+					"jsonFile" : "target-test-compiler-Debug-dfa70d55f13b66492765.json",
 					"name" : "test-compiler",
 					"projectIndex" : 0
 				},

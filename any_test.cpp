@@ -21,6 +21,11 @@ class Test {
 
 Test::Test(string value):_value(value){ cout << " 这里的value是 " << value << endl; };
 
+/**
+ * TODO:
+ *  这里的拷贝构造中拿到的value是乱码
+ *  不知道为啥
+ */
 Test::Test(const Test& t) {
   cout << "发生了拷贝构造  " << t._value << endl;
 };

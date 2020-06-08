@@ -7,7 +7,7 @@
 using namespace std;
 
 typedef enum {
-  KEYWORD,
+  KEYWORD = 0,
   VARIABLE,
   BOOLEAN,
   FLOAT,
@@ -22,11 +22,13 @@ class Token {
   string _value;
   public:
     Token(TokenType type, string value);
+    Token(const Token & t);
     TokenType getType();
     bool isVariable();
     bool isScalar();
     void toString();
     static Token& makeVarOrKeyword(ifstream& fs);
+    static Token& makeString(ifstream& fs);
 };
 
 #endif

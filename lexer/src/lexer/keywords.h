@@ -10,6 +10,8 @@ using namespace std;
 
 enum KEYWORDS {
   VAR = 0,
+  LET,
+  CONST,
   IF,
   ELSE,
   FOR,
@@ -33,6 +35,8 @@ class Keywords {
     static KeywordsMap CreateInitMap() {
       KeywordsMap temp_map;
       temp_map.insert(std::pair<string, KEYWORDS>("var", VAR));
+      temp_map.insert(std::pair<string, KEYWORDS>("let", LET));
+      temp_map.insert(std::pair<string, KEYWORDS>("const", CONST));
       temp_map.insert(std::pair<string, KEYWORDS>("if", IF));
       temp_map.insert(std::pair<string, KEYWORDS>("else", ELSE));
       temp_map.insert(std::pair<string, KEYWORDS>("while", WHILE));

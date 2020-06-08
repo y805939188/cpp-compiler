@@ -18,11 +18,12 @@ struct GetStringException : public exception
 
 Token::Token(TokenType type, string value): _type(type), _value(value){};
 
-Token::Token(const Token & t):_type(t._type), _value(t._value) {
-  cout << "发生了拷贝构造" << endl;
+Token::Token(const Token& t):_type(t._type) {
+  string str(t._value);
+  // cout << "发生了拷贝构造" << str << endl;
+  cout << "发生了拷贝构造  " << t.getValue() << endl;
+  // cout << t.getValue() << endl;
 };
-
-TokenType Token::getType() { return this -> _type; };
 bool Token::isVariable() { return this -> _type == TokenType::VARIABLE; };
 bool Token::isScalar() {
   return (
@@ -32,6 +33,9 @@ bool Token::isScalar() {
     || this -> _type == TokenType::FLOAT
   );
 };
+string Token::getValue() const { return this -> _value; };
+
+TokenType Token::getTokenType() const { return this -> _type; };
 void Token::toString() {
   cout << "类型是: " << this -> _type << " 值是: " << this -> _value << endl;
 };
@@ -80,7 +84,9 @@ Token& Token::makeString(ifstream& fs) {
     char c = fs.get();
     if (c == quotationMarks) {
       str += c;
+      cout << "这里的string是  " << str << endl; 
       Token t(TokenType::STRING, str);
+      cout << "niubibibi " << t.getValue() << endl;
       return t;
     };
     str += c;

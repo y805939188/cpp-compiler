@@ -75,6 +75,7 @@
     "cwctype": "cpp",
     "numeric": "cpp",
     "set": "cpp",
-    "strstream": "cpp"
+    "strstream": "cpp",
+    "__memory": "cpp"
   }
 }

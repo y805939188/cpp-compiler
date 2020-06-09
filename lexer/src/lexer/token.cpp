@@ -18,12 +18,11 @@ struct GetStringException : public exception
 
 Token::Token(TokenType type, string value): _type(type), _value(value){};
 
-Token::Token(const Token& t):_type(t._type) {
-  string str(t._value);
-  // cout << "发生了拷贝构造" << str << endl;
-  cout << "发生了拷贝构造  " << t.getValue() << endl;
-  // cout << t.getValue() << endl;
+Token::Token(const Token& t) {
+  /** 先留着吧 */
+  cout << "发生了拷贝构造" << endl;
 };
+
 bool Token::isVariable() { return this -> _type == TokenType::VARIABLE; };
 bool Token::isScalar() {
   return (
@@ -40,7 +39,7 @@ void Token::toString() {
   cout << "类型是: " << this -> _type << " 值是: " << this -> _value << endl;
 };
 
-Token& Token::makeVarOrKeyword(ifstream& fs) {
+Token Token::makeVarOrKeyword(ifstream& fs) {
   string str("");
   // 提取一个字符串
   while (fs.peek() != EOF) {
@@ -53,11 +52,12 @@ Token& Token::makeVarOrKeyword(ifstream& fs) {
   }
 
   if (str == "true" || str == "false") {
-    Token t(TokenType::BOOLEAN, str);
-    return t;
+    return Token(TokenType::BOOLEAN, str);
   }
 
   /**
+   * 如果先定义 Token x(xxx)
+   * 再return的话
    * 要给 Token 添加拷贝构造
    * 否则返回引用的时候调用默认的拷贝构造
    * 默认的拷贝构造比较sb有可能会造成_value丢值
@@ -67,15 +67,13 @@ Token& Token::makeVarOrKeyword(ifstream& fs) {
    * 有待研究......
    */
   if (Keywords::isKeyword(str)) {
-    Token t(TokenType::KEYWORD, str);
-    return t;
+    return Token(TokenType::KEYWORD, str);
   };
 
-  Token t(TokenType::VARIABLE, str);
-  return t;
+  return Token(TokenType::VARIABLE, str);
 };
 
-Token& Token::makeString(ifstream& fs) {
+Token Token::makeString(ifstream& fs) {
   string str("");
   char quotationMarks = fs.get(); // quotationMarks是引号的意思 应该是 " 或 ' 或 `
   str += quotationMarks;
@@ -84,10 +82,7 @@ Token& Token::makeString(ifstream& fs) {
     char c = fs.get();
     if (c == quotationMarks) {
       str += c;
-      cout << "这里的string是  " << str << endl; 
-      Token t(TokenType::STRING, str);
-      cout << "niubibibi " << t.getValue() << endl;
-      return t;
+      return Token(TokenType::STRING, str);
     };
     str += c;
   }

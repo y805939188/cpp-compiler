@@ -15,6 +15,7 @@ using namespace std;
 class Test {
   public:
     string _value;
+    Test() = default;
     Test(string value);
     Test(const Test & t);
 };
@@ -38,7 +39,8 @@ Test& test_func() {
 
 int main () {
 
-  Test tt = test_func();
+  Test tt;
+  tt = test_func();
   cout << tt._value << endl;
 
   // istream::peek 和 cin.peek 基本上就是一个东西 istream 是 cin的别名

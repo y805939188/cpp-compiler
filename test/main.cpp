@@ -37,18 +37,14 @@ int main(void) {
   // Token token = Token::makeTest(fs, str);
   // token.toString();
 
-  // Token token = Token::makeVarOrKeyword(fs);
-  // token.toString();
-  // string str("true");
-  // Token to(TokenType::BOOLEAN, str);
-  // to.toString();
-  // ostringstream os;
-  // const string str("\"这里是字符串\"");
-  // os << str;
+  Token token = Token::makeVarOrKeyword(fs);
+  token.toString();
 
   
-  Token token2 = Token::makeString(fs);
-  token2.toString();
+  // Token token2 = Token::makeString(fs);
+  // token2.toString();
+  // cout << token2.getValue() << endl;
+
 
   fs.close();
   return 0;

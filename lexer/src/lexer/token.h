@@ -21,6 +21,7 @@ class Token {
   TokenType _type;
   string _value;
   public:
+    Token() {};
     Token(TokenType type, string value);
     Token(const Token & t);
     TokenType getType();
@@ -29,8 +30,8 @@ class Token {
     void toString();
     string getValue () const;
     TokenType getTokenType () const;
-    static Token& makeVarOrKeyword(ifstream& fs);
-    static Token& makeString(ifstream& fs);
+    static Token makeVarOrKeyword(ifstream& fs);
+    static Token makeString(ifstream& fs);
 };
 
 #endif

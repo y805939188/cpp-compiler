@@ -15,33 +15,34 @@ using namespace std;
 class Test {
   public:
     string _value;
-    Test() = default;
     Test(string value);
     Test(const Test & t);
 };
 
-Test::Test(string value):_value(value){ cout << " 这里的value是 " << value << endl; };
+Test::Test(string value):_value(value){
+  cout << " 这里的value是 " << value << endl;
+};
 
-/**
- * TODO:
- *  这里的拷贝构造中拿到的value是乱码
- *  不知道为啥
- */
-Test::Test(const Test& t) {
+Test::Test(const Test& t): _value(t._value) {
   cout << "发生了拷贝构造  " << t._value << endl;
 };
 
 Test& test_func() {
-  string str("test test test test");
+  string str("test test test test test");
   Test t(str);
   return t;
 }
 
 int main () {
-
-  Test tt;
-  tt = test_func();
-  cout << tt._value << endl;
+  Test ty = test_func();
+  cout << ty._value << endl; // test test test test test
+  // Test ty2 = ty; // 会发生拷贝构造
+  // Test ty3(ty); // 会发生拷贝构造
+  // Test ty4 = test_func(); // 不会发生拷贝构造
+  // Test ty5;
+  // ty5 = ty; // 不会发生拷贝构造 因为这个是单纯的赋值操作 是函数重载在起作用
+  // cout << ty._value << endl;
+  // cout << test_func()._value << endl;
 
   // istream::peek 和 cin.peek 基本上就是一个东西 istream 是 cin的别名
   // ifstream readFile("ding.txt");

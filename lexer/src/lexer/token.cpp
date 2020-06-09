@@ -52,6 +52,9 @@ Token Token::makeVarOrKeyword(ifstream& fs) {
   }
 
   if (str == "true" || str == "false") {
+    /**
+     * 避免产生临时对象而触发拷贝构造
+     */
     return Token(TokenType::BOOLEAN, str);
   }
 

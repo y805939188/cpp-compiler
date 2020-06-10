@@ -144,6 +144,19 @@ test-compiler/fast:
 .PHONY : test-compiler/fast
 
 #=============================================================================
+# Target rules for targets named utils
+
+# Build rule for target.
+utils: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 utils
+.PHONY : utils
+
+# fast build rule for target.
+utils/fast:
+	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/utils.dir/build.make lexer/CMakeFiles/utils.dir/build
+.PHONY : utils/fast
+
+#=============================================================================
 # Target rules for targets named keywords
 
 # Build rule for target.
@@ -155,19 +168,6 @@ keywords: cmake_check_build_system
 keywords/fast:
 	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/keywords.dir/build.make lexer/CMakeFiles/keywords.dir/build
 .PHONY : keywords/fast
-
-#=============================================================================
-# Target rules for targets named token
-
-# Build rule for target.
-token: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 token
-.PHONY : token
-
-# fast build rule for target.
-token/fast:
-	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/token.dir/build.make lexer/CMakeFiles/token.dir/build
-.PHONY : token/fast
 
 #=============================================================================
 # Target rules for targets named lexer
@@ -182,6 +182,19 @@ lexer/fast:
 	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/lexer.dir/build.make lexer/CMakeFiles/lexer.dir/build
 .PHONY : lexer/fast
 
+#=============================================================================
+# Target rules for targets named token
+
+# Build rule for target.
+token: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 token
+.PHONY : token
+
+# fast build rule for target.
+token/fast:
+	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/token.dir/build.make lexer/CMakeFiles/token.dir/build
+.PHONY : token/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -194,6 +207,7 @@ help:
 	@echo "... lexer"
 	@echo "... test-compiler"
 	@echo "... token"
+	@echo "... utils"
 .PHONY : help
 
 

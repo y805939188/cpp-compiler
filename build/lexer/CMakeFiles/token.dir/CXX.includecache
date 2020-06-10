@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+../lexer/src/utils/utils.h
+iostream
+-
+
 /Users/4paradigm/Desktop/cpp-compiler/lexer/src/lexer/keywords.h
 iostream
 -
@@ -22,6 +26,8 @@ istream
 string
 -
 exception
+-
+utils/utils.h
 -
 token.h
 /Users/4paradigm/Desktop/cpp-compiler/lexer/src/lexer/token.h

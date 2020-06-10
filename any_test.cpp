@@ -9,6 +9,7 @@
 #include <fstream>
 #include <string>
 #include <map>
+#include <exception>
 
 using namespace std;
 
@@ -47,10 +48,28 @@ return false;
 }
 }
 
+// class myException:public exception  
+// {  
+// public:  
+//    myException():exception("ERROR! Don't divide a number by integer zero.n")  
+//     {  
+//     }  
+// };  
+
+[[noreturn]] void panic(char const* const format, ...) {
+    va_list args;
+    va_start(args, format);
+    vfprintf(stdout, format, args);
+    va_end(args);
+    exit(EXIT_FAILURE);
+}
+
 int main () {
-  cout << is_inzyzifu("ding ding \" ding") << endl;
-  cout << is_inzyzifu("ding ding \' ding") << endl;
-  cout << is_inzyzifu("ding ding  ding") << endl;
+  cout << isdigit('0') << endl;
+  // panic("asdfasdfasdfasdfasdf");
+  // cout << is_inzyzifu("ding ding \" ding") << endl;
+  // cout << is_inzyzifu("ding ding \' ding") << endl;
+  // cout << is_inzyzifu("ding ding  ding") << endl;
   // Test ty = test_func();
   // cout << ty._value << endl; // test test test test test
   // Test ty2 = ty; // 会发生拷贝构造

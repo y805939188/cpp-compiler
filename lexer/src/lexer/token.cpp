@@ -2,19 +2,11 @@
 #include <istream>
 #include <string>
 #include <exception>
+#include <utils/utils.h>
 #include "token.h"
 #include "keywords.h"
 
-using namespace std;
-
-struct GetStringException : public exception
-{
-  const char * what () const throw ()
-  {
-    return "get string的函数出错";
-  }
-};
- 
+using namespace std; 
 
 Token::Token(TokenType type, string value): _type(type), _value(value){};
 
@@ -29,7 +21,7 @@ bool Token::isScalar() {
     this -> _type == TokenType::INTEGER
     || this -> _type == TokenType::BOOLEAN
     || this -> _type == TokenType::STRING
-    || this -> _type == TokenType::FLOAT
+    || this -> _type == TokenType::DOUBLE
   );
 };
 string Token::getValue() const { return this -> _value; };
@@ -76,6 +68,45 @@ Token Token::getVarOrKeyword(istream& is) {
   return Token(TokenType::VARIABLE, str);
 };
 
+Token Token::getDouble(istream& is) {
+  char d = is.peek(); // 先用 peek 传进来的不是数字相关的话 就让它保留在 stream 中
+  if (isdigit(d) || d == '.' || d == '+' || d == '-') { // c >= '0' && c <= '9' ← 这么判断是不是数字也objk
+    string str("");
+    /**
+     * 有几种错误的情况要抛出异常
+     *  1. 小数点后面跟着小数点
+     *  2. 小数点后面跟着数字但是数字后又有小数点
+     *  3. 小数点后没跟着数字
+     *  4. 正负号后边跟着非小数点或者数字
+     *  5. 暂时没想到......
+     */
+    bool isFloat = false; // 设置一个初始值 用来标识该数字是否是小数
+    char previousD; // 设置上一个字符
+    while (true) {
+      d = is.get();
+      if (previousD == '.' && d == '.') Utils::panic("小数点后面跟着小数点");
+      if (isdigit(previousD) && isFloat && d == '.') Utils::panic("小数点后面还有小数点");
+      if (previousD == '.' && !isdigit(d)) Utils::panic("小数点后面没跟着数字");
+      if ((previousD == '+' || previousD == '-') && !isdigit(d) && d != '.') Utils::panic("正负号后边没跟着小数点或者数字");
+      if (d == '.' || d == '+' || d == '-' || isdigit(d)) {
+        if (d == '.') isFloat = true;
+        str += d;
+        previousD = d;
+        d = is.peek(); // 拿到下一个
+      } else {
+        // js 中可以不区分int或者float 但是这里可以简单区分一下
+        if (isFloat) return Token(TokenType::DOUBLE, str);
+        return Token(TokenType::INTEGER, str);
+      }
+    }
+  }
+
+  // string errMsg("getDouble中传进来一个非number的字符 ");
+  // string errD(d);
+  // Utils::panic(errMsg + errD);
+  Utils::panic("getDouble中传进来一个非number的字符 ");
+}
+
 Token Token::getString(istream& is) {
   string str("");
   char quotationMarks = is.get(); // quotationMarks是引号的意思 应该是 " 或 ' 或 `
@@ -83,7 +114,6 @@ Token Token::getString(istream& is) {
 
   while (is.peek() != EOF) {
     char c = is.get();
-    cout << "lalalal" << c << endl;
     if (c == '\\') { cout << "nnnnn" << endl; }
     if (c == quotationMarks) {
       str += c;
@@ -91,11 +121,9 @@ Token Token::getString(istream& is) {
     };
     str += c;
   }
-  // 走到这里说明没有结束的引号 要抛出异常 先临时用cout代替
-  cout << "获取字符串这块儿报错了" << endl;
-  throw GetStringException();
+  // 走到这里说明没有结束的引号 要抛出异常
+  Utils::panic("获取字符串这块儿报错了");
 }
-
 
 Token Token::getOperator(istream& is) {
   char c = is.get();
@@ -212,4 +240,6 @@ Token Token::getOperator(istream& is) {
   } else if (c == ';') {
     return Token(TokenType::OPERATOR, ";");
   }
+
+  Utils::panic("获取Operator时候出错了 检查getOperator");
 }

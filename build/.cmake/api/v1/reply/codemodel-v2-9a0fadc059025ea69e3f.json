@@ -45,7 +45,8 @@
 					[
 						0,
 						1,
-						3
+						3,
+						4
 					]
 				}
 			],
@@ -65,7 +66,8 @@
 						0,
 						1,
 						2,
-						3
+						3,
+						4
 					]
 				}
 			],
@@ -74,29 +76,36 @@
 				{
 					"directoryIndex" : 2,
 					"id" : "keywords::@b843ee4d2567e712e3c6",
-					"jsonFile" : "target-keywords-Debug-5c85d72a6d1babe6afe4.json",
+					"jsonFile" : "target-keywords-Debug-50d24ad818054544f235.json",
 					"name" : "keywords",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 2,
 					"id" : "lexer::@b843ee4d2567e712e3c6",
-					"jsonFile" : "target-lexer-Debug-8688405fca0f277af769.json",
+					"jsonFile" : "target-lexer-Debug-3522b3a54a75b1fba79b.json",
 					"name" : "lexer",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 1,
 					"id" : "test-compiler::@36f028580bb02cc8272a",
-					"jsonFile" : "target-test-compiler-Debug-dfa70d55f13b66492765.json",
+					"jsonFile" : "target-test-compiler-Debug-81fd63540fa17c454f28.json",
 					"name" : "test-compiler",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 2,
 					"id" : "token::@b843ee4d2567e712e3c6",
-					"jsonFile" : "target-token-Debug-d21fba2a7342d3e3b9b7.json",
+					"jsonFile" : "target-token-Debug-22e4c0dc5dc571bc6369.json",
 					"name" : "token",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "utils::@b843ee4d2567e712e3c6",
+					"jsonFile" : "target-utils-Debug-3b4157b95af2f427eb1a.json",
+					"name" : "utils",
 					"projectIndex" : 0
 				}
 			]

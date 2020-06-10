@@ -102,6 +102,7 @@ test/test-compiler: test/CMakeFiles/test-compiler.dir/build.make
 test/test-compiler: lexer/liblexer.a
 test/test-compiler: lexer/libtoken.a
 test/test-compiler: lexer/libkeywords.a
+test/test-compiler: lexer/libutils.a
 test/test-compiler: test/CMakeFiles/test-compiler.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test-compiler"
 	cd /Users/4paradigm/Desktop/cpp-compiler/build/test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test-compiler.dir/link.txt --verbose=$(VERBOSE)

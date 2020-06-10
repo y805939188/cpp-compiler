@@ -131,6 +131,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+lexer/CMakeFiles/utils.dir/rule:
+	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lexer/CMakeFiles/utils.dir/rule
+.PHONY : lexer/CMakeFiles/utils.dir/rule
+
+# Convenience name for target.
+utils: lexer/CMakeFiles/utils.dir/rule
+
+.PHONY : utils
+
+# fast build rule for target.
+utils/fast:
+	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/utils.dir/build.make lexer/CMakeFiles/utils.dir/build
+.PHONY : utils/fast
+
+# Convenience name for target.
 lexer/CMakeFiles/keywords.dir/rule:
 	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lexer/CMakeFiles/keywords.dir/rule
 .PHONY : lexer/CMakeFiles/keywords.dir/rule
@@ -146,21 +161,6 @@ keywords/fast:
 .PHONY : keywords/fast
 
 # Convenience name for target.
-lexer/CMakeFiles/token.dir/rule:
-	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lexer/CMakeFiles/token.dir/rule
-.PHONY : lexer/CMakeFiles/token.dir/rule
-
-# Convenience name for target.
-token: lexer/CMakeFiles/token.dir/rule
-
-.PHONY : token
-
-# fast build rule for target.
-token/fast:
-	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/token.dir/build.make lexer/CMakeFiles/token.dir/build
-.PHONY : token/fast
-
-# Convenience name for target.
 lexer/CMakeFiles/lexer.dir/rule:
 	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lexer/CMakeFiles/lexer.dir/rule
 .PHONY : lexer/CMakeFiles/lexer.dir/rule
@@ -174,6 +174,21 @@ lexer: lexer/CMakeFiles/lexer.dir/rule
 lexer/fast:
 	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/lexer.dir/build.make lexer/CMakeFiles/lexer.dir/build
 .PHONY : lexer/fast
+
+# Convenience name for target.
+lexer/CMakeFiles/token.dir/rule:
+	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lexer/CMakeFiles/token.dir/rule
+.PHONY : lexer/CMakeFiles/token.dir/rule
+
+# Convenience name for target.
+token: lexer/CMakeFiles/token.dir/rule
+
+.PHONY : token
+
+# fast build rule for target.
+token/fast:
+	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/token.dir/build.make lexer/CMakeFiles/token.dir/build
+.PHONY : token/fast
 
 src/lexer/keywords.o: src/lexer/keywords.cpp.o
 
@@ -256,6 +271,33 @@ src/lexer/token.cpp.s:
 	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/token.dir/build.make lexer/CMakeFiles/token.dir/src/lexer/token.cpp.s
 .PHONY : src/lexer/token.cpp.s
 
+src/utils/utils.o: src/utils/utils.cpp.o
+
+.PHONY : src/utils/utils.o
+
+# target to build an object file
+src/utils/utils.cpp.o:
+	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/utils.dir/build.make lexer/CMakeFiles/utils.dir/src/utils/utils.cpp.o
+.PHONY : src/utils/utils.cpp.o
+
+src/utils/utils.i: src/utils/utils.cpp.i
+
+.PHONY : src/utils/utils.i
+
+# target to preprocess a source file
+src/utils/utils.cpp.i:
+	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/utils.dir/build.make lexer/CMakeFiles/utils.dir/src/utils/utils.cpp.i
+.PHONY : src/utils/utils.cpp.i
+
+src/utils/utils.s: src/utils/utils.cpp.s
+
+.PHONY : src/utils/utils.s
+
+# target to generate assembly for a file
+src/utils/utils.cpp.s:
+	cd /Users/4paradigm/Desktop/cpp-compiler/build && $(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/utils.dir/build.make lexer/CMakeFiles/utils.dir/src/utils/utils.cpp.s
+.PHONY : src/utils/utils.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -267,6 +309,7 @@ help:
 	@echo "... keywords"
 	@echo "... lexer"
 	@echo "... token"
+	@echo "... utils"
 	@echo "... src/lexer/keywords.o"
 	@echo "... src/lexer/keywords.i"
 	@echo "... src/lexer/keywords.s"
@@ -276,6 +319,9 @@ help:
 	@echo "... src/lexer/token.o"
 	@echo "... src/lexer/token.i"
 	@echo "... src/lexer/token.s"
+	@echo "... src/utils/utils.o"
+	@echo "... src/utils/utils.i"
+	@echo "... src/utils/utils.s"
 .PHONY : help
 
 

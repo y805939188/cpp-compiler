@@ -93,6 +93,28 @@ int main(void) {
   Token token10 = Token::getOperator(is10);
   token10.toString();
 
+  // string str11("ding");
+  // istringstream is11(str11);
+  // Token token11 = Token::getDouble(is11);
+  // token11.toString();
+
+  string str12[] = {
+    "+66 ding",
+    "-88.888 ding2",
+    "777 ding3",
+    "666",
+    "999.9",
+    ".15926",
+    ".15926 ding",
+    "+.99887 ding"
+  };
+  for (string str: str12) {
+    istringstream is12(str);
+    // cout << "这里的字符串是" << str << endl;
+    Token token12 = Token::getDouble(is12);
+    token12.toString();
+  }
+
 
 
   // fs_getVarOrKeyword.close();

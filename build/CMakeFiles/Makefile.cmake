@@ -54,7 +54,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "test/CMakeFiles/test-compiler.dir/DependInfo.cmake"
+  "lexer/CMakeFiles/utils.dir/DependInfo.cmake"
   "lexer/CMakeFiles/keywords.dir/DependInfo.cmake"
-  "lexer/CMakeFiles/token.dir/DependInfo.cmake"
   "lexer/CMakeFiles/lexer.dir/DependInfo.cmake"
+  "lexer/CMakeFiles/token.dir/DependInfo.cmake"
   )

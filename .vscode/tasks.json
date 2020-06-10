@@ -10,8 +10,9 @@
         "-Wall",
         "-std=c++11",
         "${file}",
-        "${fileDirname}/lexer/src/lexer/token.cpp",
-        "${fileDirname}/lexer/src/lexer/keywords.cpp",
+        // "${fileDirname}/lexer/src/utils/utils.cpp",
+        // "${fileDirname}/lexer/src/lexer/token.cpp",
+        // "${fileDirname}/lexer/src/lexer/keywords.cpp",
         "-o",
         "${workspaceFolder}/output/${fileBasenameNoExtension}"
       ],

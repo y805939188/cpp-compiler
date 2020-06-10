@@ -1,3 +1,4 @@
+add_definitions(-w)
 add_executable(test-compiler main.cpp) # 定义一个叫 cpp-compiler 的可执行文件 main.cpp 作为入口
 
 # target_link_libraries 是表示要把 say-hello 这个 lib 给链接到 cpp-compiler 这个可执行文件里

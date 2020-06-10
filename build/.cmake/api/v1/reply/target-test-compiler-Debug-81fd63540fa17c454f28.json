@@ -25,13 +25,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 1,
+				"line" : 2,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 7,
+				"line" : 8,
 				"parent" : 0
 			}
 		]
@@ -42,7 +42,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk  "
+					"fragment" : "-g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -w"
 				}
 			],
 			"includes" : 
@@ -63,15 +63,19 @@
 	[
 		{
 			"backtrace" : 2,
+			"id" : "utils::@b843ee4d2567e712e3c6"
+		},
+		{
+			"backtrace" : 2,
 			"id" : "keywords::@b843ee4d2567e712e3c6"
 		},
 		{
 			"backtrace" : 2,
-			"id" : "token::@b843ee4d2567e712e3c6"
+			"id" : "lexer::@b843ee4d2567e712e3c6"
 		},
 		{
 			"backtrace" : 2,
-			"id" : "lexer::@b843ee4d2567e712e3c6"
+			"id" : "token::@b843ee4d2567e712e3c6"
 		}
 	],
 	"id" : "test-compiler::@36f028580bb02cc8272a",
@@ -98,6 +102,10 @@
 			},
 			{
 				"fragment" : "../lexer/libkeywords.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "../lexer/libutils.a",
 				"role" : "libraries"
 			}
 		],

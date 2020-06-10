@@ -1,5 +1,5 @@
 #include <iostream>
-#include <fstream>
+#include <istream>
 #include <string>
 #include <exception>
 #include "token.h"
@@ -11,7 +11,7 @@ struct GetStringException : public exception
 {
   const char * what () const throw ()
   {
-    return "make string的函数出错";
+    return "get string的函数出错";
   }
 };
  
@@ -36,14 +36,14 @@ string Token::getValue() const { return this -> _value; };
 
 TokenType Token::getTokenType() const { return this -> _type; };
 void Token::toString() {
-  cout << "类型是: " << this -> _type << " 值是: " << this -> _value << endl;
+  cout << "类型是: " << this -> _type << "(" << Token::getTypeName(this -> _type) << ")" << " 值是: " << this -> _value << endl;
 };
 
-Token Token::makeVarOrKeyword(ifstream& fs) {
+Token Token::getVarOrKeyword(istream& is) {
   string str("");
   // 提取一个字符串
-  while (fs.peek() != EOF) {
-    char c = fs.get();
+  while (is.peek() != EOF) {
+    char c = is.get();
     if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c == '_')) {
       str += c;
     } else {
@@ -76,13 +76,15 @@ Token Token::makeVarOrKeyword(ifstream& fs) {
   return Token(TokenType::VARIABLE, str);
 };
 
-Token Token::makeString(ifstream& fs) {
+Token Token::getString(istream& is) {
   string str("");
-  char quotationMarks = fs.get(); // quotationMarks是引号的意思 应该是 " 或 ' 或 `
+  char quotationMarks = is.get(); // quotationMarks是引号的意思 应该是 " 或 ' 或 `
   str += quotationMarks;
 
-  while (fs.peek() != EOF) {
-    char c = fs.get();
+  while (is.peek() != EOF) {
+    char c = is.get();
+    cout << "lalalal" << c << endl;
+    if (c == '\\') { cout << "nnnnn" << endl; }
     if (c == quotationMarks) {
       str += c;
       return Token(TokenType::STRING, str);
@@ -94,3 +96,120 @@ Token Token::makeString(ifstream& fs) {
   throw GetStringException();
 }
 
+
+Token Token::getOperator(istream& is) {
+  char c = is.get();
+  string str("");
+  str += c;
+  if (c == '+') {
+    if (is.peek() == '=') {
+      c = is.get();
+      return Token(TokenType::OPERATOR, "+=");
+    } else if (is.peek() == '+') {
+      c = is.get();
+      return Token(TokenType::OPERATOR, "++");
+    } else {
+      return Token(TokenType::OPERATOR, "+");
+    }
+  } else if (c == '-') {
+    if (is.peek() == '=') {
+      c = is.get();
+      return Token(TokenType::OPERATOR, "-=");
+    } else if (is.peek() == '-') {
+      c = is.get();
+      return Token(TokenType::OPERATOR, "--");
+    } else {
+      return Token(TokenType::OPERATOR, "-");
+    }
+  } else if (c == '*') {
+    if (is.peek() == '=') {
+      c = is.get();
+      return Token(TokenType::OPERATOR, "*=");
+    } else if (is.peek() == '*') {
+      c = is.get();
+      return Token(TokenType::OPERATOR, "**"); // 取平方
+    } else {
+      return Token(TokenType::OPERATOR, "*");
+    }
+  } else if (c == '/') {
+    if (is.peek() == '=') {
+      c = is.get();
+      return Token(TokenType::OPERATOR, "/=");
+    } else {
+      return Token(TokenType::OPERATOR, "*");
+    }
+  } else if (c == '%') {
+    if (is.peek() == '=') {
+      c = is.get();
+      return Token(TokenType::OPERATOR, "%=");
+    } else {
+      return Token(TokenType::OPERATOR, "%");
+    }
+  } else if (c == '~') {
+    return Token(TokenType::OPERATOR, "~");
+  } else if (c == '|') {
+    if (is.peek() == '|') {
+      c = is.get();
+      return Token(TokenType::OPERATOR, "||");
+    }
+    return Token(TokenType::OPERATOR, "|"); 
+  } else if (c == '&') {
+    if (is.peek() == '&') {
+      c = is.get();
+      return Token(TokenType::OPERATOR, "&&");
+    }
+    return Token(TokenType::OPERATOR, "&"); 
+  } else if (c == '!') {
+    if (is.peek() == '=') {
+      c = is.get();
+      c = is.peek();
+      if (c == '=') {
+        return Token(TokenType::OPERATOR, "!==");
+      }
+      return Token(TokenType::OPERATOR, "!=");
+    } else if (is.peek() == '!') {
+      c = is.get();
+      return Token(TokenType::OPERATOR, "!!");
+    } else {
+      return Token(TokenType::OPERATOR, "!");
+    }
+  } else if (c == '=') {
+    if (is.peek() == '=') {
+      c = is.get();
+      c = is.peek();
+      if (c == '=') {
+        return Token(TokenType::OPERATOR, "===");
+      }
+      return Token(TokenType::OPERATOR, "==");
+    }
+    return Token(TokenType::OPERATOR, "=");
+  } else if (c == '>') {
+    if (is.peek() == '=') {
+      c = is.get();
+      return Token(TokenType::OPERATOR, ">=");
+    }
+    return Token(TokenType::OPERATOR, ">");
+  } else if (c == '<') {
+    if (is.peek() == '=') {
+      c = is.get();
+      return Token(TokenType::OPERATOR, "<=");
+    }
+    return Token(TokenType::OPERATOR, "<");
+  } else if (c == '[') {
+    return Token(TokenType::OPERATOR, "[");
+  } else if (c == ']') {
+    return Token(TokenType::OPERATOR, "]");
+  } else if (c == '{') {
+    return Token(TokenType::OPERATOR, "{");
+  } else if (c == '}') {
+    return Token(TokenType::OPERATOR, "}");
+  } else if (c == '(') {
+    return Token(TokenType::OPERATOR, "(");
+  } else if (c == ')') {
+    return Token(TokenType::OPERATOR, ")");
+  } else if (c == ',') {
+    return Token(TokenType::OPERATOR, ",");
+  } else if (c == ';') {
+    return Token(TokenType::OPERATOR, ";");
+  }
+}

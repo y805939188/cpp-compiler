@@ -33,9 +33,26 @@ Test& test_func() {
   return t;
 }
 
+bool is_inzyzifu(const string &str) {
+static string caps("//");
+string::size_type pos = 0;
+pos = str.find_first_of(caps, pos);
+if (pos != string::npos)
+{
+return true;
+}
+else
+{
+return false;
+}
+}
+
 int main () {
-  Test ty = test_func();
-  cout << ty._value << endl; // test test test test test
+  cout << is_inzyzifu("ding ding \" ding") << endl;
+  cout << is_inzyzifu("ding ding \' ding") << endl;
+  cout << is_inzyzifu("ding ding  ding") << endl;
+  // Test ty = test_func();
+  // cout << ty._value << endl; // test test test test test
   // Test ty2 = ty; // 会发生拷贝构造
   // Test ty3(ty); // 会发生拷贝构造
   // Test ty4 = test_func(); // 不会发生拷贝构造
@@ -102,8 +119,14 @@ int main () {
   //   cout << "有result" << " " << result -> second << endl;
   // }
 
-
-
+  // ifstream fs;
+  // string str("ding1");
+  // // cout << static_cast<char>((*istreamObj).get()) << endl;
+  // // istream* ss = static_cast< istream* >(fs);
+  // ifstream fs = static_cast< ifstream >(str);
+  // ifstream fs2;
+  // // str >> fs2;
+  // fs2 << str;
 
 
   return 0;

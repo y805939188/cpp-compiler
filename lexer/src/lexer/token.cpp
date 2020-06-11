@@ -15,7 +15,18 @@ Token::Token(const Token& t) {
   cout << "发生了拷贝构造" << endl;
 };
 
+bool Token::isString() { return this -> _type == TokenType::STRING; };
+
+bool Token::isOperator() { return this -> _type == TokenType::OPERATOR; };
+
 bool Token::isVariable() { return this -> _type == TokenType::VARIABLE; };
+
+bool Token::isBracket() { return this -> _type == TokenType::BRACKET; };
+
+bool Token::isKeyword() { return this -> _type == TokenType::KEYWORD; };
+
+bool Token::isNumber() { return this -> _type == TokenType::INTEGER || this -> _type == TokenType::DOUBLE; };
+
 bool Token::isScalar() {
   return (
     this -> _type == TokenType::INTEGER
@@ -35,9 +46,10 @@ Token Token::getVarOrKeyword(istream& is) {
   string str("");
   // 提取一个字符串
   while (is.peek() != EOF) {
-    char c = is.get();
-    if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c == '_')) {
+    char c = is.peek();
+    if (isalpha(c) || (c == '_')) {
       str += c;
+      c = is.get();
     } else {
       break;
     }
@@ -88,13 +100,29 @@ Token Token::getDouble(istream& is) {
       if (isdigit(previousD) && isFloat && d == '.') Utils::panic("小数点后面还有小数点");
       if (previousD == '.' && !isdigit(d)) Utils::panic("小数点后面没跟着数字");
       if ((previousD == '+' || previousD == '-') && !isdigit(d) && d != '.') Utils::panic("正负号后边没跟着小数点或者数字");
+
+      if (d == ' ') {
+        while (true) {
+          d = is.get();
+          if (d == EOF) return Token(TokenType::INTEGER, str);
+          if (d == ' ') continue;
+          Utils::panic("数字后面可以跟空格 但是空格之后不能再有别的东西了");
+        }
+      }
+
       if (d == '.' || d == '+' || d == '-' || isdigit(d)) {
+        if ((d == '+' || d == '-') && isdigit(previousD)) {
+          // 进到这儿说明出现了类似 666.6-1 这种情况
+          is.putback(d); // 需要把特殊符号放回去
+          return Token(TokenType::INTEGER, str); // 然后直接返回
+        }
         if (d == '.') isFloat = true;
         str += d;
         previousD = d;
         d = is.peek(); // 拿到下一个
       } else {
         // js 中可以不区分int或者float 但是这里可以简单区分一下
+        is.putback(d);
         if (isFloat) return Token(TokenType::DOUBLE, str);
         return Token(TokenType::INTEGER, str);
       }

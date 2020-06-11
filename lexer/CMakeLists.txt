@@ -9,6 +9,7 @@
 
 add_library(
   lexer
+  src/lexer/lexer.h
   src/lexer/lexer.cpp
 )
 
@@ -31,6 +32,7 @@ add_library(
 )
 
 target_link_libraries(lexer PRIVATE token)
+target_link_libraries(lexer PRIVATE utils)
 # target_link_libraries(lexer PRIVATE keywords)
 target_link_libraries(token PRIVATE keywords)
 target_link_libraries(token PRIVATE utils)

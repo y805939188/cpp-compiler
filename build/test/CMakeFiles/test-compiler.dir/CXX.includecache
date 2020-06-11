@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+../lexer/src/lexer/lexer.h
+iostream
+-
+istream
+-
+deque
+-
+token.h
+../lexer/src/lexer/token.h
+
 ../lexer/src/lexer/token.h
 iostream
 -
@@ -20,5 +30,7 @@ fstream
 sstream
 -
 lexer/token.h
+-
+lexer/lexer.h
 -
 

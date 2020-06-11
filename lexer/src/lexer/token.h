@@ -37,8 +37,13 @@ class Token {
     Token(TokenType type, string value);
     Token(const Token & t);
     TokenType getType();
+    bool isNumber();
     bool isVariable();
     bool isScalar();
+    bool isOperator();
+    bool isString();
+    bool isBracket();
+    bool isKeyword();
     void toString();
     string getValue () const;
     TokenType getTokenType () const;

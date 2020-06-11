@@ -16,8 +16,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/Users/4paradigm/Desktop/cpp-compiler/build/lexer/CMakeFiles/token.dir/DependInfo.cmake"
-  "/Users/4paradigm/Desktop/cpp-compiler/build/lexer/CMakeFiles/keywords.dir/DependInfo.cmake"
   "/Users/4paradigm/Desktop/cpp-compiler/build/lexer/CMakeFiles/utils.dir/DependInfo.cmake"
+  "/Users/4paradigm/Desktop/cpp-compiler/build/lexer/CMakeFiles/keywords.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

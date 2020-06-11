@@ -17,10 +17,11 @@ enum KEYWORDS {
   FOR,
   WHILE,
   BREAK,
-  FUNC,
+  FUNCTION,
   RETURN,
   CONTINUE,
   NONE,
+  NAN
 };
 
 typedef map<string, KEYWORDS> KeywordsMap;
@@ -42,10 +43,11 @@ class Keywords {
       temp_map.insert(std::pair<string, KEYWORDS>("while", WHILE));
       temp_map.insert(std::pair<string, KEYWORDS>("null", NONE));
       temp_map.insert(std::pair<string, KEYWORDS>("for", FOR));
-      temp_map.insert(std::pair<string, KEYWORDS>("func", FUNC));
+      temp_map.insert(std::pair<string, KEYWORDS>("function", FUNCTION));
       temp_map.insert(std::pair<string, KEYWORDS>("return", RETURN));
       temp_map.insert(std::pair<string, KEYWORDS>("break", BREAK));
       temp_map.insert(std::pair<string, KEYWORDS>("continue", CONTINUE));
+      temp_map.insert(std::pair<string, KEYWORDS>("NaN", NAN));
       return temp_map;
     };
 };

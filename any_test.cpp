@@ -9,6 +9,7 @@
 #include <fstream>
 #include <string>
 #include <map>
+#include <deque>
 #include <exception>
 
 using namespace std;
@@ -65,7 +66,46 @@ return false;
 }
 
 int main () {
-  cout << isdigit('0') << endl;
+  // cout << isdigit('0') << endl;
+  // cout << isalpha('a') << endl;
+  // cout << isalpha('b') << endl;
+  // cout << isalpha('C') << endl;
+  // cout << isalpha('6') << endl;
+
+  // deque<int> test;
+  // int a;
+  // test.push_back(a = 888);
+  // cout << a << endl;
+  // cout << test[0] << endl;
+
+  cout << ispunct('a') << endl;
+  cout << ispunct('0') << endl;
+  cout << ispunct('*') << endl;
+  cout << ispunct('\\') << endl;
+  cout << ispunct('(') << endl;
+  cout << ispunct('$') << endl;
+  cout << ispunct('"') << endl;
+  cout << ispunct('+') << endl;
+
+
+  // istringstream str("+       88");
+  // char f = str.get();
+  // char a;
+  // string test("");
+  // test += f;
+  // while(a = str.peek()) {
+  //   if (a == EOF) break;
+  //   if (isdigit(a)) { test += a; break; };
+  //   if (a == ' ') {
+  //     a = str.get();
+  //     continue;
+  //   };
+  //   test += a;
+  // }
+  // cout << test << endl;
+
+  // cout << EOF << endl;
+
   // panic("asdfasdfasdfasdfasdf");
   // cout << is_inzyzifu("ding ding \" ding") << endl;
   // cout << is_inzyzifu("ding ding \' ding") << endl;

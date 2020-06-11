@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+../lexer/src/utils/utils.h
+iostream
+-
+
 /Users/4paradigm/Desktop/cpp-compiler/lexer/src/lexer/lexer.cpp
 iostream
 -
@@ -14,6 +18,20 @@ deque
 sstream
 -
 string
+-
+utils/utils.h
+-
+token.h
+/Users/4paradigm/Desktop/cpp-compiler/lexer/src/lexer/token.h
+lexer.h
+/Users/4paradigm/Desktop/cpp-compiler/lexer/src/lexer/lexer.h
+
+/Users/4paradigm/Desktop/cpp-compiler/lexer/src/lexer/lexer.h
+iostream
+-
+istream
+-
+deque
 -
 token.h
 /Users/4paradigm/Desktop/cpp-compiler/lexer/src/lexer/token.h

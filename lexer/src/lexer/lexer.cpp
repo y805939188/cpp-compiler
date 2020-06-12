@@ -11,6 +11,10 @@ using namespace std;
 deque<Token*> Lexer::analyse(istream& source) {
   deque<Token*> tokensList;
 
+  // char t = source.get();
+  // source.putback(t);
+  // cout << static_cast<char>(source.peek()) << endl; 
+  // return tokensList;
   char c;
   char previousC;
   Token previdousTemporaryToken;
@@ -24,6 +28,9 @@ deque<Token*> Lexer::analyse(istream& source) {
     if (Utils::anyone(c, ' ', '\n', '\r')) continue;
     if (Utils::anyone(c, '"', '\'', '`')) {
       // tokensList.push_back(&(previdousTemporaryToken = Token::getString(source)));
+      // cout << "进入了拿字符串的逻辑中 " << c << endl;
+      source.putback(c);
+      // cout << source.peek() << endl;
       Token t = Token::getString(source);
       tokensList.push_back(&t);
       previousC = c;
@@ -58,11 +65,14 @@ deque<Token*> Lexer::analyse(istream& source) {
         if (Utils::anyone(c, '+', '-', '.')) {
           // 如果是这仨的要特殊处理 因为他们可能是 Number
           // cout << "进到了 + - . 组中, 当前的符号是 " << c << endl;
-          char temporary = source.peek();
+          char temporary;
+          // cout << "temporary的值是 " << temporary << endl;
           while (true) {
             // 把这个正负号或者小数点后面的空格们拿掉
+            temporary = source.peek();
+            // cout << "这里下一个temp是  " << temporary << endl;
             if (temporary == EOF) Utils::panic("这种情况可能是代码写的有问题, 因为流被消费完了");
-            if (temporary != ' ') break; // 如果下一个是数字的话 就停止这个while循环
+            if (temporary != ' ') break; // 如果下一个不是空格的话 就停止这个while循环
             if (temporary == ' ') {
               if (c == '.') {
                 // 如果 c 是小数点的话后面还跟着空格那就直接报错
@@ -86,12 +96,18 @@ deque<Token*> Lexer::analyse(istream& source) {
           if (c == '+') {
             // cout << "尽到了字符组的 + 组中, 上一个Token的Type是 " << previdousTemporaryToken.getTokenType() << endl;
             Token* prev = tokensList[tokensList.size() - 1];
+            // cout << "尽到了字符组中的 + 组中 上一个Token的tyoe是 " << (*prev).getValue() << endl;
             if (isdigit(temporary) && !(*prev).isNumber()) {
               // 如果是个数字 那就是类似 +6 酱婶儿的
               // 并且前面的那个 Token 不能是数字 如果是数字的话应该被翻译为 x + y
-              source.putback(c); // 如果temporary是数字的话就把 + 号放回去
+              // source.putback(c); // 如果temporary是数字的话就把 + 号放回去
               // tokensList.push_back(&(previdousTemporaryToken = Token::getDouble(source)));
-              Token t = Token::getDouble(source);
+              Token temporaryToken = Token::getDouble(source);
+              string temporaryStr("+");
+              temporaryStr += temporaryToken.getValue();
+              // TokenType temporaryType = temporaryToken.getTokenType();
+              Token t(temporaryToken.getTokenType(), temporaryStr);
+              // cout << "这里拿到的number是哈哈哈哈  " << t.getValue() << endl;
               tokensList.push_back(&t);
               t.toString();
               continue;
@@ -110,9 +126,38 @@ deque<Token*> Lexer::analyse(istream& source) {
             else {
               // 其他情况就是加个操作符了
               // cout << "在 + 组中 进入了其他操作符组 " << c << endl;
-              source.putback(c); // 这种情况下也把加号放进去就行了
+              // cout << "99988877  " << static_cast<char>(source.peek()) << endl;
+              // cout << "这里的temporary是   " << temporary << endl;
+              // source.putback('o'); // 这种情况下也把加号放进去就行了
+  
               // tokensList.push_back(&(previdousTemporaryToken = Token::getOperator(source)));
-              Token t = Token::getOperator(source);
+              // cout << "下一个是 " << source.peek() << endl;
+              // cout << "下一个是 " << source.peek() << endl;
+              // Token t = Token::getOperator(source);
+
+              /**
+               * 这里不能直接putback
+               * 因为上面为了把空格干掉 可能 get 了好几次
+               * 所以这里 putback 的话 可能会和上一次的不匹配
+               */
+
+              // Token temporaryToken = Token::getOperator(source);
+
+              // Token t = Token::getOperator(source);
+
+              // string temporaryStr("+");
+
+              // cout << "这里的临死时候死你 " << temporaryToken.getValue() << endl;
+
+              // temporaryStr += temporaryToken.getValue();
+
+              // source.putback('+');
+
+              // cout << "kkkkkkkkkk   " << source.peek() << endl;
+
+
+
+              Token t(TokenType::OPERATOR, "+");
               tokensList.push_back(&t);
               // cout << "下一个字符是 " << static_cast<char>(source.peek()) << endl;
               t.toString();
@@ -123,17 +168,28 @@ deque<Token*> Lexer::analyse(istream& source) {
             Token* prev = tokensList[tokensList.size() - 1];
             if (isdigit(temporary) && !(*prev).isNumber()) {
               // 如果是个数字 那就是类似 -7 酱婶儿的
-              source.putback(c); // 如果temporary是数字的话就把 - 号放回去
+              // source.putback(c); // 如果temporary是数字的话就把 - 号放回去
               // tokensList.push_back(&(previdousTemporaryToken = Token::getDouble(source)));
-              Token t = Token::getDouble(source);
+              // Token t = Token::getDouble(source);
+              
+              Token temporaryToken = Token::getDouble(source);
+              string temporaryStr("-");
+              temporaryStr += temporaryToken.getValue();
+
+              Token t(TokenType::OPERATOR, temporaryStr);
+
+              // cout << "这里拿到的减号的值是 " << t.getValue() << endl;
+              
               tokensList.push_back(&t);
               t.toString();
               continue;
             } else {
               // 其他情况 就是以上注释掉的那些情况
-              source.putback(c); // 这种情况下也把减号放进去就行了
+              // source.putback(c); // 这种情况下也把减号放进去就行了
               // tokensList.push_back(&(previdousTemporaryToken = Token::getOperator(source)));
-              Token t = Token::getOperator(source);
+              // Token t = Token::getOperator(source);
+              string temporaryStr("-");
+              Token t(TokenType::OPERATOR, temporaryStr);
               tokensList.push_back(&t);
               t.toString();
               continue;
@@ -141,7 +197,7 @@ deque<Token*> Lexer::analyse(istream& source) {
           } else if (c == '.') {
             if (isdigit(temporary)) {
               // 如果是个数字 那就是类似 .8 酱婶儿的
-              source.putback(c); // 如果temporary是数字的话就把 - 号放回去
+              // source.putback(c); // 如果temporary是数字的话就把 - 号放回去
               // tokensList.push_back(&(previdousTemporaryToken = Token::getDouble(source)));
               Token t = Token::getDouble(source);
               tokensList.push_back(&t);
@@ -156,6 +212,7 @@ deque<Token*> Lexer::analyse(istream& source) {
           // 走到这里可能是一些特殊符号或者操作符
           // cout << "进入了其他操作符组, 当前符号是 " << c << endl;
           source.putback(c); // 把操作符给放回去
+          // cout << static_cast<char>(source.peek()) << endl;
           // previdousTemporaryToken = Token::getOperator(source);
           Token t = Token::getOperator(source);
           tokensList.push_back(&t);

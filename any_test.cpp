@@ -78,15 +78,25 @@ int main () {
   // cout << a << endl;
   // cout << test[0] << endl;
 
-  cout << ispunct('a') << endl;
-  cout << ispunct('0') << endl;
-  cout << ispunct('*') << endl;
-  cout << ispunct('\\') << endl;
-  cout << ispunct('(') << endl;
-  cout << ispunct('$') << endl;
-  cout << ispunct('"') << endl;
-  cout << ispunct('+') << endl;
+  // cout << ispunct('a') << endl;
+  // cout << ispunct('0') << endl;
+  // cout << ispunct('*') << endl;
+  // cout << ispunct('\\') << endl;
+  // cout << ispunct('(') << endl;
+  // cout << ispunct('$') << endl;
+  // cout << ispunct('"') << endl;
+  // cout << ispunct('+') << endl;
 
+  // istringstream ding("ding");
+  // char c = ding.get();
+  // ding.putback('q');
+  // cout << static_cast<char>(ding.peek()) << endl;
+
+  // cout << '+' + "ddd" << endl;
+
+  // instr
+
+  
 
   // istringstream str("+       88");
   // char f = str.get();

@@ -101,15 +101,6 @@ Token Token::getDouble(istream& is) {
       if (previousD == '.' && !isdigit(d)) Utils::panic("小数点后面没跟着数字");
       if ((previousD == '+' || previousD == '-') && !isdigit(d) && d != '.') Utils::panic("正负号后边没跟着小数点或者数字");
 
-      if (d == ' ') {
-        while (true) {
-          d = is.get();
-          if (d == EOF) return Token(TokenType::INTEGER, str);
-          if (d == ' ') continue;
-          Utils::panic("数字后面可以跟空格 但是空格之后不能再有别的东西了");
-        }
-      }
-
       if (d == '.' || d == '+' || d == '-' || isdigit(d)) {
         if ((d == '+' || d == '-') && isdigit(previousD)) {
           // 进到这儿说明出现了类似 666.6-1 这种情况
@@ -165,6 +156,7 @@ Token Token::getOperator(istream& is) {
       c = is.get();
       return Token(TokenType::OPERATOR, "++");
     } else {
+      // c = is.get();
       return Token(TokenType::OPERATOR, "+");
     }
   } else if (c == '-') {
@@ -192,7 +184,7 @@ Token Token::getOperator(istream& is) {
       c = is.get();
       return Token(TokenType::OPERATOR, "/=");
     } else {
-      return Token(TokenType::OPERATOR, "*");
+      return Token(TokenType::OPERATOR, "/");
     }
   } else if (c == '%') {
     if (is.peek() == '=') {
@@ -234,6 +226,7 @@ Token Token::getOperator(istream& is) {
       c = is.get();
       c = is.peek();
       if (c == '=') {
+        c = is.get();
         return Token(TokenType::OPERATOR, "===");
       }
       return Token(TokenType::OPERATOR, "==");

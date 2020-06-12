@@ -130,7 +130,7 @@ int main(void) {
    *  1. 有些空格的情况需要处理
    *  2. 怎么把Token往tokensList数组中放
    */
-  string str13("( a + b ) * [ 666.6 - 1 ] === 8 + 9 - 'ding ye niubi' * ding / liu % wang  + [1,2 ,4, 6, 'd' ] ");
+  string str13("( a + b ) * [ 666.6 - 1 ] === -7 + `ding2` - [1,2] || 8 + 9 - 'ding ye niubi' * ding / liu % wang  + [1,2 ,4, 6, 'd' ] ");
   istringstream is12(str13);
   Lexer::analyse(is12);
 

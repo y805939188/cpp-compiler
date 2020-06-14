@@ -1,27 +1,32 @@
 [
 {
   "directory": "/Users/4paradigm/Desktop/cpp-compiler/build/test",
-  "command": "/usr/bin/clang++   -I/Users/4paradigm/Desktop/cpp-compiler/lexer/src  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -w -o CMakeFiles/test-compiler.dir/main.cpp.o -c /Users/4paradigm/Desktop/cpp-compiler/test/main.cpp",
+  "command": "/usr/bin/clang++   -I/Users/4paradigm/Desktop/cpp-compiler/src/lexer  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -w -o CMakeFiles/test-compiler.dir/main.cpp.o -c /Users/4paradigm/Desktop/cpp-compiler/test/main.cpp",
   "file": "/Users/4paradigm/Desktop/cpp-compiler/test/main.cpp"
 },
 {
-  "directory": "/Users/4paradigm/Desktop/cpp-compiler/build/lexer",
-  "command": "/usr/bin/clang++   -I/Users/4paradigm/Desktop/cpp-compiler/lexer/src  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -o CMakeFiles/utils.dir/src/utils/utils.cpp.o -c /Users/4paradigm/Desktop/cpp-compiler/lexer/src/utils/utils.cpp",
-  "file": "/Users/4paradigm/Desktop/cpp-compiler/lexer/src/utils/utils.cpp"
+  "directory": "/Users/4paradigm/Desktop/cpp-compiler/build/src",
+  "command": "/usr/bin/clang++   -I/Users/4paradigm/Desktop/cpp-compiler/src/utils  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -o CMakeFiles/utils.dir/utils/utils.cpp.o -c /Users/4paradigm/Desktop/cpp-compiler/src/utils/utils.cpp",
+  "file": "/Users/4paradigm/Desktop/cpp-compiler/src/utils/utils.cpp"
 },
 {
-  "directory": "/Users/4paradigm/Desktop/cpp-compiler/build/lexer",
-  "command": "/usr/bin/clang++   -I/Users/4paradigm/Desktop/cpp-compiler/lexer/src  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -o CMakeFiles/keywords.dir/src/lexer/keywords.cpp.o -c /Users/4paradigm/Desktop/cpp-compiler/lexer/src/lexer/keywords.cpp",
-  "file": "/Users/4paradigm/Desktop/cpp-compiler/lexer/src/lexer/keywords.cpp"
+  "directory": "/Users/4paradigm/Desktop/cpp-compiler/build/src",
+  "command": "/usr/bin/clang++   -I/Users/4paradigm/Desktop/cpp-compiler/src/lexer  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -o CMakeFiles/keywords.dir/lexer/keywords.cpp.o -c /Users/4paradigm/Desktop/cpp-compiler/src/lexer/keywords.cpp",
+  "file": "/Users/4paradigm/Desktop/cpp-compiler/src/lexer/keywords.cpp"
 },
 {
-  "directory": "/Users/4paradigm/Desktop/cpp-compiler/build/lexer",
-  "command": "/usr/bin/clang++   -I/Users/4paradigm/Desktop/cpp-compiler/lexer/src  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -o CMakeFiles/lexer.dir/src/lexer/lexer.cpp.o -c /Users/4paradigm/Desktop/cpp-compiler/lexer/src/lexer/lexer.cpp",
-  "file": "/Users/4paradigm/Desktop/cpp-compiler/lexer/src/lexer/lexer.cpp"
+  "directory": "/Users/4paradigm/Desktop/cpp-compiler/build/src",
+  "command": "/usr/bin/clang++   -I/Users/4paradigm/Desktop/cpp-compiler/src/ast -I/Users/4paradigm/Desktop/cpp-compiler/src/lexer -I/Users/4paradigm/Desktop/cpp-compiler/src/utils  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -o CMakeFiles/ast.dir/ast/ast.cpp.o -c /Users/4paradigm/Desktop/cpp-compiler/src/ast/ast.cpp",
+  "file": "/Users/4paradigm/Desktop/cpp-compiler/src/ast/ast.cpp"
 },
 {
-  "directory": "/Users/4paradigm/Desktop/cpp-compiler/build/lexer",
-  "command": "/usr/bin/clang++   -I/Users/4paradigm/Desktop/cpp-compiler/lexer/src  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -o CMakeFiles/token.dir/src/lexer/token.cpp.o -c /Users/4paradigm/Desktop/cpp-compiler/lexer/src/lexer/token.cpp",
-  "file": "/Users/4paradigm/Desktop/cpp-compiler/lexer/src/lexer/token.cpp"
+  "directory": "/Users/4paradigm/Desktop/cpp-compiler/build/src",
+  "command": "/usr/bin/clang++   -I/Users/4paradigm/Desktop/cpp-compiler/src/lexer -I/Users/4paradigm/Desktop/cpp-compiler/src/utils  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -o CMakeFiles/token.dir/lexer/token.cpp.o -c /Users/4paradigm/Desktop/cpp-compiler/src/lexer/token.cpp",
+  "file": "/Users/4paradigm/Desktop/cpp-compiler/src/lexer/token.cpp"
+},
+{
+  "directory": "/Users/4paradigm/Desktop/cpp-compiler/build/src",
+  "command": "/usr/bin/clang++   -I/Users/4paradigm/Desktop/cpp-compiler/src/lexer -I/Users/4paradigm/Desktop/cpp-compiler/src/utils  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -o CMakeFiles/lexer.dir/lexer/lexer.cpp.o -c /Users/4paradigm/Desktop/cpp-compiler/src/lexer/lexer.cpp",
+  "file": "/Users/4paradigm/Desktop/cpp-compiler/src/lexer/lexer.cpp"
 }
 ]

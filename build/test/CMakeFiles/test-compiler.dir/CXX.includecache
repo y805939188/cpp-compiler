@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-../lexer/src/lexer/lexer.h
+../src/lexer/lexer.h
 iostream
 -
 istream
@@ -14,9 +14,9 @@ istream
 deque
 -
 token.h
-../lexer/src/lexer/token.h
+../src/lexer/token.h
 
-../lexer/src/lexer/token.h
+../src/lexer/token.h
 iostream
 -
 string
@@ -29,8 +29,8 @@ fstream
 -
 sstream
 -
-lexer/token.h
+token.h
 -
-lexer/lexer.h
+lexer.h
 -
 

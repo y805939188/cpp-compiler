@@ -3,9 +3,10 @@
 /Users/4paradigm/Desktop/cpp-compiler/build/test/CMakeFiles/rebuild_cache.dir
 /Users/4paradigm/Desktop/cpp-compiler/build/test/CMakeFiles/edit_cache.dir
 /Users/4paradigm/Desktop/cpp-compiler/build/test/CMakeFiles/test-compiler.dir
-/Users/4paradigm/Desktop/cpp-compiler/build/lexer/CMakeFiles/rebuild_cache.dir
-/Users/4paradigm/Desktop/cpp-compiler/build/lexer/CMakeFiles/utils.dir
-/Users/4paradigm/Desktop/cpp-compiler/build/lexer/CMakeFiles/keywords.dir
-/Users/4paradigm/Desktop/cpp-compiler/build/lexer/CMakeFiles/lexer.dir
-/Users/4paradigm/Desktop/cpp-compiler/build/lexer/CMakeFiles/edit_cache.dir
-/Users/4paradigm/Desktop/cpp-compiler/build/lexer/CMakeFiles/token.dir
+/Users/4paradigm/Desktop/cpp-compiler/build/src/CMakeFiles/utils.dir
+/Users/4paradigm/Desktop/cpp-compiler/build/src/CMakeFiles/keywords.dir
+/Users/4paradigm/Desktop/cpp-compiler/build/src/CMakeFiles/rebuild_cache.dir
+/Users/4paradigm/Desktop/cpp-compiler/build/src/CMakeFiles/ast.dir
+/Users/4paradigm/Desktop/cpp-compiler/build/src/CMakeFiles/token.dir
+/Users/4paradigm/Desktop/cpp-compiler/build/src/CMakeFiles/edit_cache.dir
+/Users/4paradigm/Desktop/cpp-compiler/build/src/CMakeFiles/lexer.dir

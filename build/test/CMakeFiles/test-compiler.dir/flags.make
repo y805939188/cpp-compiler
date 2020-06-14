@@ -6,5 +6,5 @@ CXX_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sd
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/4paradigm/Desktop/cpp-compiler/lexer/src 
+CXX_INCLUDES = -I/Users/4paradigm/Desktop/cpp-compiler/src/lexer 
 

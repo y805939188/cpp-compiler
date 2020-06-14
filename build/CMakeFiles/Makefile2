@@ -74,45 +74,47 @@ CMAKE_BINARY_DIR = /Users/4paradigm/Desktop/cpp-compiler/build
 
 # The main recursive "all" target.
 all: test/all
-all: lexer/all
+all: src/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: test/preinstall
-preinstall: lexer/preinstall
+preinstall: src/preinstall
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: test/clean
-clean: lexer/clean
+clean: src/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory lexer
+# Directory level rules for directory src
 
 # Recursive "all" directory target.
-lexer/all: lexer/CMakeFiles/utils.dir/all
-lexer/all: lexer/CMakeFiles/keywords.dir/all
-lexer/all: lexer/CMakeFiles/lexer.dir/all
-lexer/all: lexer/CMakeFiles/token.dir/all
+src/all: src/CMakeFiles/utils.dir/all
+src/all: src/CMakeFiles/keywords.dir/all
+src/all: src/CMakeFiles/ast.dir/all
+src/all: src/CMakeFiles/token.dir/all
+src/all: src/CMakeFiles/lexer.dir/all
 
-.PHONY : lexer/all
+.PHONY : src/all
 
 # Recursive "preinstall" directory target.
-lexer/preinstall:
+src/preinstall:
 
-.PHONY : lexer/preinstall
+.PHONY : src/preinstall
 
 # Recursive "clean" directory target.
-lexer/clean: lexer/CMakeFiles/utils.dir/clean
-lexer/clean: lexer/CMakeFiles/keywords.dir/clean
-lexer/clean: lexer/CMakeFiles/lexer.dir/clean
-lexer/clean: lexer/CMakeFiles/token.dir/clean
+src/clean: src/CMakeFiles/utils.dir/clean
+src/clean: src/CMakeFiles/keywords.dir/clean
+src/clean: src/CMakeFiles/ast.dir/clean
+src/clean: src/CMakeFiles/token.dir/clean
+src/clean: src/CMakeFiles/lexer.dir/clean
 
-.PHONY : lexer/clean
+.PHONY : src/clean
 
 #=============================================================================
 # Directory level rules for directory test
@@ -136,13 +138,13 @@ test/clean: test/CMakeFiles/test-compiler.dir/clean
 # Target rules for target test/CMakeFiles/test-compiler.dir
 
 # All Build rule for target.
-test/CMakeFiles/test-compiler.dir/all: lexer/CMakeFiles/utils.dir/all
-test/CMakeFiles/test-compiler.dir/all: lexer/CMakeFiles/keywords.dir/all
-test/CMakeFiles/test-compiler.dir/all: lexer/CMakeFiles/lexer.dir/all
-test/CMakeFiles/test-compiler.dir/all: lexer/CMakeFiles/token.dir/all
+test/CMakeFiles/test-compiler.dir/all: src/CMakeFiles/utils.dir/all
+test/CMakeFiles/test-compiler.dir/all: src/CMakeFiles/keywords.dir/all
+test/CMakeFiles/test-compiler.dir/all: src/CMakeFiles/token.dir/all
+test/CMakeFiles/test-compiler.dir/all: src/CMakeFiles/lexer.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test-compiler.dir/build.make test/CMakeFiles/test-compiler.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test-compiler.dir/build.make test/CMakeFiles/test-compiler.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles --progress-num=5,6 "Built target test-compiler"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles --progress-num=7,8 "Built target test-compiler"
 .PHONY : test/CMakeFiles/test-compiler.dir/all
 
 # Build rule for subdir invocation for target.
@@ -163,115 +165,144 @@ test/CMakeFiles/test-compiler.dir/clean:
 .PHONY : test/CMakeFiles/test-compiler.dir/clean
 
 #=============================================================================
-# Target rules for target lexer/CMakeFiles/utils.dir
+# Target rules for target src/CMakeFiles/utils.dir
 
 # All Build rule for target.
-lexer/CMakeFiles/utils.dir/all:
-	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/utils.dir/build.make lexer/CMakeFiles/utils.dir/depend
-	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/utils.dir/build.make lexer/CMakeFiles/utils.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles --progress-num=9,10 "Built target utils"
-.PHONY : lexer/CMakeFiles/utils.dir/all
+src/CMakeFiles/utils.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/utils.dir/build.make src/CMakeFiles/utils.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/utils.dir/build.make src/CMakeFiles/utils.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles --progress-num=11,12 "Built target utils"
+.PHONY : src/CMakeFiles/utils.dir/all
 
 # Build rule for subdir invocation for target.
-lexer/CMakeFiles/utils.dir/rule: cmake_check_build_system
+src/CMakeFiles/utils.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lexer/CMakeFiles/utils.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/utils.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles 0
-.PHONY : lexer/CMakeFiles/utils.dir/rule
+.PHONY : src/CMakeFiles/utils.dir/rule
 
 # Convenience name for target.
-utils: lexer/CMakeFiles/utils.dir/rule
+utils: src/CMakeFiles/utils.dir/rule
 
 .PHONY : utils
 
 # clean rule for target.
-lexer/CMakeFiles/utils.dir/clean:
-	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/utils.dir/build.make lexer/CMakeFiles/utils.dir/clean
-.PHONY : lexer/CMakeFiles/utils.dir/clean
+src/CMakeFiles/utils.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/utils.dir/build.make src/CMakeFiles/utils.dir/clean
+.PHONY : src/CMakeFiles/utils.dir/clean
 
 #=============================================================================
-# Target rules for target lexer/CMakeFiles/keywords.dir
+# Target rules for target src/CMakeFiles/keywords.dir
 
 # All Build rule for target.
-lexer/CMakeFiles/keywords.dir/all:
-	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/keywords.dir/build.make lexer/CMakeFiles/keywords.dir/depend
-	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/keywords.dir/build.make lexer/CMakeFiles/keywords.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles --progress-num=1,2 "Built target keywords"
-.PHONY : lexer/CMakeFiles/keywords.dir/all
+src/CMakeFiles/keywords.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/keywords.dir/build.make src/CMakeFiles/keywords.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/keywords.dir/build.make src/CMakeFiles/keywords.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles --progress-num=3,4 "Built target keywords"
+.PHONY : src/CMakeFiles/keywords.dir/all
 
 # Build rule for subdir invocation for target.
-lexer/CMakeFiles/keywords.dir/rule: cmake_check_build_system
+src/CMakeFiles/keywords.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lexer/CMakeFiles/keywords.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/keywords.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles 0
-.PHONY : lexer/CMakeFiles/keywords.dir/rule
+.PHONY : src/CMakeFiles/keywords.dir/rule
 
 # Convenience name for target.
-keywords: lexer/CMakeFiles/keywords.dir/rule
+keywords: src/CMakeFiles/keywords.dir/rule
 
 .PHONY : keywords
 
 # clean rule for target.
-lexer/CMakeFiles/keywords.dir/clean:
-	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/keywords.dir/build.make lexer/CMakeFiles/keywords.dir/clean
-.PHONY : lexer/CMakeFiles/keywords.dir/clean
+src/CMakeFiles/keywords.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/keywords.dir/build.make src/CMakeFiles/keywords.dir/clean
+.PHONY : src/CMakeFiles/keywords.dir/clean
 
 #=============================================================================
-# Target rules for target lexer/CMakeFiles/lexer.dir
+# Target rules for target src/CMakeFiles/ast.dir
 
 # All Build rule for target.
-lexer/CMakeFiles/lexer.dir/all: lexer/CMakeFiles/utils.dir/all
-lexer/CMakeFiles/lexer.dir/all: lexer/CMakeFiles/keywords.dir/all
-lexer/CMakeFiles/lexer.dir/all: lexer/CMakeFiles/token.dir/all
-	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/lexer.dir/build.make lexer/CMakeFiles/lexer.dir/depend
-	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/lexer.dir/build.make lexer/CMakeFiles/lexer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles --progress-num=3,4 "Built target lexer"
-.PHONY : lexer/CMakeFiles/lexer.dir/all
+src/CMakeFiles/ast.dir/all: src/CMakeFiles/utils.dir/all
+src/CMakeFiles/ast.dir/all: src/CMakeFiles/keywords.dir/all
+src/CMakeFiles/ast.dir/all: src/CMakeFiles/token.dir/all
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/ast.dir/build.make src/CMakeFiles/ast.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/ast.dir/build.make src/CMakeFiles/ast.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles --progress-num=1,2 "Built target ast"
+.PHONY : src/CMakeFiles/ast.dir/all
 
 # Build rule for subdir invocation for target.
-lexer/CMakeFiles/lexer.dir/rule: cmake_check_build_system
+src/CMakeFiles/ast.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles 8
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lexer/CMakeFiles/lexer.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/ast.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles 0
-.PHONY : lexer/CMakeFiles/lexer.dir/rule
+.PHONY : src/CMakeFiles/ast.dir/rule
 
 # Convenience name for target.
-lexer: lexer/CMakeFiles/lexer.dir/rule
+ast: src/CMakeFiles/ast.dir/rule
 
-.PHONY : lexer
+.PHONY : ast
 
 # clean rule for target.
-lexer/CMakeFiles/lexer.dir/clean:
-	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/lexer.dir/build.make lexer/CMakeFiles/lexer.dir/clean
-.PHONY : lexer/CMakeFiles/lexer.dir/clean
+src/CMakeFiles/ast.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/ast.dir/build.make src/CMakeFiles/ast.dir/clean
+.PHONY : src/CMakeFiles/ast.dir/clean
 
 #=============================================================================
-# Target rules for target lexer/CMakeFiles/token.dir
+# Target rules for target src/CMakeFiles/token.dir
 
 # All Build rule for target.
-lexer/CMakeFiles/token.dir/all: lexer/CMakeFiles/utils.dir/all
-lexer/CMakeFiles/token.dir/all: lexer/CMakeFiles/keywords.dir/all
-	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/token.dir/build.make lexer/CMakeFiles/token.dir/depend
-	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/token.dir/build.make lexer/CMakeFiles/token.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles --progress-num=7,8 "Built target token"
-.PHONY : lexer/CMakeFiles/token.dir/all
+src/CMakeFiles/token.dir/all: src/CMakeFiles/utils.dir/all
+src/CMakeFiles/token.dir/all: src/CMakeFiles/keywords.dir/all
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/token.dir/build.make src/CMakeFiles/token.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/token.dir/build.make src/CMakeFiles/token.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles --progress-num=9,10 "Built target token"
+.PHONY : src/CMakeFiles/token.dir/all
 
 # Build rule for subdir invocation for target.
-lexer/CMakeFiles/token.dir/rule: cmake_check_build_system
+src/CMakeFiles/token.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles 6
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lexer/CMakeFiles/token.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/token.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles 0
-.PHONY : lexer/CMakeFiles/token.dir/rule
+.PHONY : src/CMakeFiles/token.dir/rule
 
 # Convenience name for target.
-token: lexer/CMakeFiles/token.dir/rule
+token: src/CMakeFiles/token.dir/rule
 
 .PHONY : token
 
 # clean rule for target.
-lexer/CMakeFiles/token.dir/clean:
-	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/token.dir/build.make lexer/CMakeFiles/token.dir/clean
-.PHONY : lexer/CMakeFiles/token.dir/clean
+src/CMakeFiles/token.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/token.dir/build.make src/CMakeFiles/token.dir/clean
+.PHONY : src/CMakeFiles/token.dir/clean
+
+#=============================================================================
+# Target rules for target src/CMakeFiles/lexer.dir
+
+# All Build rule for target.
+src/CMakeFiles/lexer.dir/all: src/CMakeFiles/utils.dir/all
+src/CMakeFiles/lexer.dir/all: src/CMakeFiles/keywords.dir/all
+src/CMakeFiles/lexer.dir/all: src/CMakeFiles/token.dir/all
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/lexer.dir/build.make src/CMakeFiles/lexer.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/lexer.dir/build.make src/CMakeFiles/lexer.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles --progress-num=5,6 "Built target lexer"
+.PHONY : src/CMakeFiles/lexer.dir/all
+
+# Build rule for subdir invocation for target.
+src/CMakeFiles/lexer.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles 8
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/lexer.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/4paradigm/Desktop/cpp-compiler/build/CMakeFiles 0
+.PHONY : src/CMakeFiles/lexer.dir/rule
+
+# Convenience name for target.
+lexer: src/CMakeFiles/lexer.dir/rule
+
+.PHONY : lexer
+
+# clean rule for target.
+src/CMakeFiles/lexer.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/lexer.dir/build.make src/CMakeFiles/lexer.dir/clean
+.PHONY : src/CMakeFiles/lexer.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

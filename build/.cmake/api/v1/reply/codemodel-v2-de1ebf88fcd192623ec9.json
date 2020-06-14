@@ -1,0 +1,134 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.17"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "test",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.17"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "test",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "src",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.17"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						4,
+						5
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2
+					],
+					"name" : "CPPCompiler",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "ast::@145eef247bfb46b6828c",
+					"jsonFile" : "target-ast-Debug-8856fdb0ad95b5dcd123.json",
+					"name" : "ast",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "keywords::@145eef247bfb46b6828c",
+					"jsonFile" : "target-keywords-Debug-939cd9384bef7a6178a7.json",
+					"name" : "keywords",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "lexer::@145eef247bfb46b6828c",
+					"jsonFile" : "target-lexer-Debug-6c6b2d82371a0c5cd173.json",
+					"name" : "lexer",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "test-compiler::@36f028580bb02cc8272a",
+					"jsonFile" : "target-test-compiler-Debug-d2efe345abffa45c0327.json",
+					"name" : "test-compiler",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "token::@145eef247bfb46b6828c",
+					"jsonFile" : "target-token-Debug-f3d37722acd9d68d65f6.json",
+					"name" : "token",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "utils::@145eef247bfb46b6828c",
+					"jsonFile" : "target-utils-Debug-286188941e2cae2a21cf.json",
+					"name" : "utils",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/4paradigm/Desktop/cpp-compiler/build",
+		"source" : "/Users/4paradigm/Desktop/cpp-compiler"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}

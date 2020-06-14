@@ -34,7 +34,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.17.2/CMakeCCompiler.cmake"
   "CMakeFiles/3.17.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.17.2/CMakeSystem.cmake"
-  "../lexer/CMakeLists.txt"
+  "../src/CMakeLists.txt"
   "../test/CMakeLists.txt"
   )
 
@@ -48,14 +48,15 @@ set(CMAKE_MAKEFILE_OUTPUTS
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "test/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "lexer/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "test/CMakeFiles/test-compiler.dir/DependInfo.cmake"
-  "lexer/CMakeFiles/utils.dir/DependInfo.cmake"
-  "lexer/CMakeFiles/keywords.dir/DependInfo.cmake"
-  "lexer/CMakeFiles/lexer.dir/DependInfo.cmake"
-  "lexer/CMakeFiles/token.dir/DependInfo.cmake"
+  "src/CMakeFiles/utils.dir/DependInfo.cmake"
+  "src/CMakeFiles/keywords.dir/DependInfo.cmake"
+  "src/CMakeFiles/ast.dir/DependInfo.cmake"
+  "src/CMakeFiles/token.dir/DependInfo.cmake"
+  "src/CMakeFiles/lexer.dir/DependInfo.cmake"
   )

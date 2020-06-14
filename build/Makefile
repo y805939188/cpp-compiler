@@ -153,7 +153,7 @@ utils: cmake_check_build_system
 
 # fast build rule for target.
 utils/fast:
-	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/utils.dir/build.make lexer/CMakeFiles/utils.dir/build
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/utils.dir/build.make src/CMakeFiles/utils.dir/build
 .PHONY : utils/fast
 
 #=============================================================================
@@ -166,21 +166,21 @@ keywords: cmake_check_build_system
 
 # fast build rule for target.
 keywords/fast:
-	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/keywords.dir/build.make lexer/CMakeFiles/keywords.dir/build
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/keywords.dir/build.make src/CMakeFiles/keywords.dir/build
 .PHONY : keywords/fast
 
 #=============================================================================
-# Target rules for targets named lexer
+# Target rules for targets named ast
 
 # Build rule for target.
-lexer: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lexer
-.PHONY : lexer
+ast: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ast
+.PHONY : ast
 
 # fast build rule for target.
-lexer/fast:
-	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/lexer.dir/build.make lexer/CMakeFiles/lexer.dir/build
-.PHONY : lexer/fast
+ast/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/ast.dir/build.make src/CMakeFiles/ast.dir/build
+.PHONY : ast/fast
 
 #=============================================================================
 # Target rules for targets named token
@@ -192,8 +192,21 @@ token: cmake_check_build_system
 
 # fast build rule for target.
 token/fast:
-	$(MAKE) $(MAKESILENT) -f lexer/CMakeFiles/token.dir/build.make lexer/CMakeFiles/token.dir/build
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/token.dir/build.make src/CMakeFiles/token.dir/build
 .PHONY : token/fast
+
+#=============================================================================
+# Target rules for targets named lexer
+
+# Build rule for target.
+lexer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lexer
+.PHONY : lexer
+
+# fast build rule for target.
+lexer/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/lexer.dir/build.make src/CMakeFiles/lexer.dir/build
+.PHONY : lexer/fast
 
 # Help Target
 help:
@@ -203,6 +216,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... ast"
 	@echo "... keywords"
 	@echo "... lexer"
 	@echo "... test-compiler"

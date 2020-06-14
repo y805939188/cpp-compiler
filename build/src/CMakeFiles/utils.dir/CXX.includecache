@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/4paradigm/Desktop/cpp-compiler/src/utils/utils.cpp
+iostream
+-
+string
+-
+utils.h
+/Users/4paradigm/Desktop/cpp-compiler/src/utils/utils.h
+
+/Users/4paradigm/Desktop/cpp-compiler/src/utils/utils.h
+iostream
+-
+

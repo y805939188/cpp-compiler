@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <lexer/token.h>
-#include <lexer/lexer.h>
+#include <token.h>
+#include <lexer.h>
 using namespace std;
 
 /**
@@ -145,7 +145,7 @@ int main(void) {
   deque<D_Token> tokensList = Lexer::analyse(fs_getfunc);
 
 
-  deque<shared_ptr<Token> >::iterator iter;
+  deque<D_Token>::iterator iter;
   cout << "一共有 " << tokensList.size() << " 个 Token" << endl;
   
   for (D_Token token: tokensList) {

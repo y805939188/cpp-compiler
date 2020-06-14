@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/utils/utils.h
+iostream
+-
+
+/Users/4paradigm/Desktop/cpp-compiler/src/lexer/lexer.cpp
+iostream
+-
+deque
+-
+sstream
+-
+string
+-
+utils.h
+-
+token.h
+/Users/4paradigm/Desktop/cpp-compiler/src/lexer/token.h
+lexer.h
+/Users/4paradigm/Desktop/cpp-compiler/src/lexer/lexer.h
+
+/Users/4paradigm/Desktop/cpp-compiler/src/lexer/lexer.h
+iostream
+-
+istream
+-
+deque
+-
+token.h
+/Users/4paradigm/Desktop/cpp-compiler/src/lexer/token.h
+
+/Users/4paradigm/Desktop/cpp-compiler/src/lexer/token.h
+iostream
+-
+string
+-
+

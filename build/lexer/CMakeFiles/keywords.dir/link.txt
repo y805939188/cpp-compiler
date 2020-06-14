@@ -1,2 +1,0 @@
-/usr/bin/ar qc libkeywords.a  CMakeFiles/keywords.dir/src/lexer/keywords.cpp.o
-/usr/bin/ranlib libkeywords.a

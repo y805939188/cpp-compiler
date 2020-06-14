@@ -47,10 +47,10 @@ class Token {
     void toString();
     string getValue () const;
     TokenType getTokenType () const;
-    static Token getVarOrKeyword(istream& is);
-    static Token getDouble(istream& is); // js或者python中的数字全都是double
-    static Token getString(istream& is);
-    static Token getOperator(istream& is);
+    static Token* getVarOrKeyword(istream& is);
+    static Token* getDouble(istream& is); // js或者python中的数字全都是double
+    static Token* getString(istream& is);
+    static Token* getOperator(istream& is);
 };
 
 #endif

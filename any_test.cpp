@@ -65,7 +65,33 @@ return false;
     exit(EXIT_FAILURE);
 }
 
+class MyTest {
+  string str;
+  public:
+    MyTest(string s): str(s) {};
+    static MyTest* setStr(string str) { return (new MyTest(str)); }
+    void getStr() { cout << "这里的str是" << this -> str << endl; }
+};
+deque<MyTest*> test_func2() {
+  deque<MyTest*> myList;
+  for (unsigned i = 0; i < 10; i++) {
+    string tempStr("ding test");
+    MyTest* m = MyTest::setStr(tempStr);
+    myList.push_back(m);
+  }
+  return myList;
+}
 int main () {
+  deque<MyTest*> testList = test_func2();
+  deque<MyTest*>::iterator iter;
+  cout << "一共有 " << testList.size() << " 个" << endl;
+  for (MyTest* test: testList) {
+    (*test).getStr();
+  }
+  for (MyTest* test: testList) {
+    delete test;
+  }
+
   // cout << isdigit('0') << endl;
   // cout << isalpha('a') << endl;
   // cout << isalpha('b') << endl;

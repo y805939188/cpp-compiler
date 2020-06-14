@@ -5,3 +5,6 @@ function foo(a, b) {
   return a;
 }
 foo(1, 2);
+
+const test = 666;
+var a = 888;

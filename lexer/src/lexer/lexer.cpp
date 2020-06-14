@@ -9,7 +9,7 @@
 using namespace std;
 
 deque<Token*> Lexer::analyse(istream& source) {
-  deque<Token*> tokensList;
+  deque<Token*> tokenList;
 
   char c;
   char previousC;
@@ -20,23 +20,23 @@ deque<Token*> Lexer::analyse(istream& source) {
     if (Utils::anyone(c, ' ', '\n', '\r')) continue;
     if (Utils::anyone(c, '"', '\'', '`')) {
       source.putback(c);
-      Token t = Token::getString(source);
-      tokensList.push_back(&t);
+      Token* t = Token::getString(source);
+      tokenList.push_back(t);
       previousC = c;
-      t.toString();
+      // t.toString();
       continue;
     } else if (isdigit(c)) {
       source.putback(c);
-      Token t = Token::getDouble(source);
-      tokensList.push_back(&t);
-      t.toString();
+      Token* t = Token::getDouble(source);
+      tokenList.push_back(t);
+      // t.toString();
       continue;
     } else if (isalpha(c)) { // isalpha 判断是否是字母
       source.putback(c);
-      Token t = Token::getVarOrKeyword(source);
-      tokensList.push_back(&t);
+      Token* t = Token::getVarOrKeyword(source);
+      tokenList.push_back(t);
       previousC = c;
-      t.toString();
+      // t.toString();
       continue;
     } else {
       /**
@@ -94,16 +94,16 @@ deque<Token*> Lexer::analyse(istream& source) {
           // 可能是个变量名 数字 字符串 或者 操作符
           // 由于 js 中对于正负号和小数点的运算都不一样 所以要分别判断
           if (c == '+') {
-            Token* prev = tokensList[tokensList.size() - 1];
+            Token* prev = tokenList[tokenList.size() - 1];
             if (isdigit(temporary) && !(*prev).isNumber()) {
               // 如果是个数字 那就是类似 +6 酱婶儿的
               // 并且前面的那个 Token 不能是数字 如果是数字的话应该被翻译为 x + y;
-              Token temporaryToken = Token::getDouble(source);
+              Token* temporaryToken = Token::getDouble(source);
               string temporaryStr("+");
-              temporaryStr += temporaryToken.getValue();
-              Token t(temporaryToken.getTokenType(), temporaryStr);
-              tokensList.push_back(&t);
-              t.toString();
+              temporaryStr += (*temporaryToken).getValue();
+              Token* t = new Token((*temporaryToken).getTokenType(), temporaryStr);
+              tokenList.push_back(t);
+              // t.toString();
               continue;
             } else {
               /**
@@ -119,71 +119,53 @@ deque<Token*> Lexer::analyse(istream& source) {
                */
               if (isalpha(temporary) || isdigit(temporary) || Utils::anyone(temporary, '\'', '"', '`', '[')) {
                 string temporaryStr("+");
-                Token t(TokenType::OPERATOR, temporaryStr);
-                tokensList.push_back(&t);
-                t.toString();
+                Token* t = new Token(TokenType::OPERATOR, temporaryStr);
+                tokenList.push_back(t);
+                // t.toString();
                 continue;
               } else {
                 // 如果能进入这里 说明 putback 肯定不会出错
                 source.putback(c);
-                Token t = Token::getOperator(source);
-                tokensList.push_back(&t);
-                t.toString();
+                Token* t = Token::getOperator(source);
+                tokenList.push_back(t);
+                // t.toString();
                 continue;
               }
             }
           } else if (c == '-') {
-            // Token* prev = tokensList[tokensList.size() - 1];
-            // if (isdigit(temporary) && !(*prev).isNumber()) {
-            //   // 如果是个数字 那就是类似 -7 酱婶儿的
-            //   Token temporaryToken = Token::getDouble(source);
-            //   string temporaryStr("-");
-            //   temporaryStr += temporaryToken.getValue();
-            //   Token t(TokenType::OPERATOR, temporaryStr);              
-            //   tokensList.push_back(&t);
-            //   t.toString();
-            //   continue;
-            // } else {
-            //   // 其他情况 就是以上注释掉的那些情况
-            //   string temporaryStr("-");
-            //   Token t(TokenType::OPERATOR, temporaryStr);
-            //   tokensList.push_back(&t);
-            //   t.toString();
-            //   continue;
-            // }
-            Token* prev = tokensList[tokensList.size() - 1];
+            Token* prev = tokenList[tokenList.size() - 1];
             if (isdigit(temporary) && !(*prev).isNumber()) {
               // 如果是个数字 那就是类似 -7 酱婶儿的
-              Token temporaryToken = Token::getDouble(source);
+              Token* temporaryToken = Token::getDouble(source);
               string temporaryStr("-");
-              temporaryStr += temporaryToken.getValue();
-              Token t(temporaryToken.getTokenType(), temporaryStr);
-              tokensList.push_back(&t);
-              t.toString();
+              temporaryStr += (*temporaryToken).getValue();
+              Token* t = new Token((*temporaryToken).getTokenType(), temporaryStr);
+              tokenList.push_back(t);
+              // t.toString();
               continue;
             } else {
               // x - [] => NaN
               if (isalpha(temporary) || isdigit(temporary) || Utils::anyone(temporary, '\'', '"', '`', '[')) {
                 string temporaryStr("-");
-                Token t(TokenType::OPERATOR, temporaryStr);
-                tokensList.push_back(&t);
-                t.toString();
+                Token* t = new Token(TokenType::OPERATOR, temporaryStr);
+                tokenList.push_back(t);
+                // t.toString();
                 continue;
               } else {
                 // 如果能进入这里 说明 putback 肯定不会出错
                 source.putback(c);
-                Token t = Token::getOperator(source);
-                tokensList.push_back(&t);
-                t.toString();
+                Token* t = Token::getOperator(source);
+                tokenList.push_back(t);
+                // t.toString();
                 continue;
               }
             }
           } else if (c == '.') {
             if (isdigit(temporary)) {
               // 如果是个数字 那就是类似 .8 酱婶儿的
-              Token t = Token::getDouble(source);
-              tokensList.push_back(&t);
-              t.toString();
+              Token* t = Token::getDouble(source);
+              tokenList.push_back(t);
+              // t.toString();
               continue;
             } else {
               // 其他情况可以直接报错
@@ -193,9 +175,9 @@ deque<Token*> Lexer::analyse(istream& source) {
         } else {
           // 走到这里可能是一些特殊符号或者操作符
           source.putback(c); // 把操作符给放回去
-          Token t = Token::getOperator(source);
-          tokensList.push_back(&t);
-          t.toString();
+          Token* t = Token::getOperator(source);
+          tokenList.push_back(t);
+          // t.toString();
           continue;
         }
       }
@@ -204,15 +186,6 @@ deque<Token*> Lexer::analyse(istream& source) {
     Utils::panic("在提取 Token 的过程中没有匹配到做任何一种");
   }
 
-    // deque<Token>::iterator (iter*);
-    cout << "一共有 " << tokensList.size() << " 个 Token" << endl;
-    // for (iter = tokensList.begin(); iter != *tokensList.end(); iter++) {
-    //   (*iter).toString();
-    // }
-    // for (Token* token: tokensList) {
-    //   (*token).toString();
-    // }
-    // (*tokensList[0]).toString();
-  return tokensList;
+  return tokenList;
 }
 

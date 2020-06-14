@@ -130,16 +130,24 @@ int main(void) {
    *  1. 有些空格的情况需要处理
    *  2. 怎么把Token往tokensList数组中放
    */
-  string str13("( a + b ) * [ 666.6 - 1 ] === -7 + `ding2` - [1,2] || 8 + 9 - 'ding ye niubi' * ding / liu % wang  + [1,2 ,4, 6, 'd' ] ");
-  istringstream is12(str13);
-  Lexer::analyse(is12);
+  // string str13("( a + b ) * [ 666.6 - 1 ] === -7 + `ding2` - [1,2] || 8 + 9 - 'ding ye niubi' * ding / liu % wang  + [1,2 ,4, 6, 'd' ] ");
+  // istringstream is12(str13);
+  // Lexer::analyse(is12);
 
   cout << "----------------------------------------" << endl;
 
 
   ifstream fs_getfunc;
   fs_getfunc.open("./test/lexer.test.txt");
-  Lexer::analyse(fs_getfunc);
+  deque<Token*> tokensList = Lexer::analyse(fs_getfunc);
+
+
+  deque<Token*>::iterator iter;
+  cout << "一共有 " << tokensList.size() << " 个 Token" << endl;
+  
+  for (Token* token: tokensList) {
+    (*token).toString();
+  }
 
   /**
    * TODO:

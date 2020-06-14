@@ -21,7 +21,14 @@ enum KEYWORDS {
   RETURN,
   CONTINUE,
   NONE,
-  NAN
+  NAN,
+  // OBJECT,
+  // NUMBER,
+  // STRING,
+  // BOOLEAN,
+  // UNDIFINED,
+  // ARRAY,
+  // DATE
 };
 
 typedef map<string, KEYWORDS> KeywordsMap;
@@ -48,6 +55,7 @@ class Keywords {
       temp_map.insert(std::pair<string, KEYWORDS>("break", BREAK));
       temp_map.insert(std::pair<string, KEYWORDS>("continue", CONTINUE));
       temp_map.insert(std::pair<string, KEYWORDS>("NaN", NAN));
+
       return temp_map;
     };
 };

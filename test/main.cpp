@@ -38,6 +38,9 @@ int main(void) {
   // token2.toString();
   // cout << token2.getValue() << endl;
 
+  // fs_getVarOrKeyword.close();
+  // fs_getString.close();
+
   // string str1("ding1");
   // istringstream is1(str1);
   // Token token1 = Token::getVarOrKeyword(is1);
@@ -139,13 +142,13 @@ int main(void) {
 
   ifstream fs_getfunc;
   fs_getfunc.open("./test/lexer.test.txt");
-  deque<Token*> tokensList = Lexer::analyse(fs_getfunc);
+  deque<D_Token> tokensList = Lexer::analyse(fs_getfunc);
 
 
-  deque<Token*>::iterator iter;
+  deque<shared_ptr<Token> >::iterator iter;
   cout << "一共有 " << tokensList.size() << " 个 Token" << endl;
   
-  for (Token* token: tokensList) {
+  for (D_Token token: tokensList) {
     (*token).toString();
   }
 
@@ -156,7 +159,5 @@ int main(void) {
    *  但当为 += 的时候会有问题
    */
 
-  // fs_getVarOrKeyword.close();
-  // fs_getString.close();
   return 0;
 }

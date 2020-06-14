@@ -42,7 +42,7 @@ void Token::toString() {
   cout << "类型是: " << this -> _type << "(" << Token::getTypeName(this -> _type) << ")" << " 值是: " << this -> _value << endl;
 };
 
-Token* Token::getVarOrKeyword(istream& is) {
+D_Token Token::getVarOrKeyword(istream& is) {
   string str("");
   // 提取一个字符串
   while (is.peek() != EOF) {
@@ -59,8 +59,7 @@ Token* Token::getVarOrKeyword(istream& is) {
     /**
      * 避免产生临时对象而触发拷贝构造
      */
-    // return Token(TokenType::BOOLEAN, str);
-    return new Token(TokenType::BOOLEAN, str);
+    return D_Token(new Token(TokenType::BOOLEAN, str));
   }
 
   /**
@@ -75,14 +74,12 @@ Token* Token::getVarOrKeyword(istream& is) {
    * 有待研究......
    */
   if (Keywords::isKeyword(str)) {
-    // return Token(TokenType::KEYWORD, str);
-      return new Token(TokenType::KEYWORD, str);
+    return D_Token(new Token(TokenType::KEYWORD, str));
   };
-  // return Token(TokenType::VARIABLE, str);
-  return new Token(TokenType::VARIABLE, str);
+  return D_Token(new Token(TokenType::VARIABLE, str));
 };
 
-Token* Token::getDouble(istream& is) {
+D_Token Token::getDouble(istream& is) {
   char d = is.peek(); // 先用 peek 传进来的不是数字相关的话 就让它保留在 stream 中
   if (isdigit(d) || d == '.' || d == '+' || d == '-') { // c >= '0' && c <= '9' ← 这么判断是不是数字也objk
     string str("");
@@ -107,8 +104,7 @@ Token* Token::getDouble(istream& is) {
         if ((d == '+' || d == '-') && isdigit(previousD)) {
           // 进到这儿说明出现了类似 666.6-1 这种情况
           is.putback(d); // 需要把特殊符号放回去
-          // return Token(TokenType::INTEGER, str); // 然后直接返回
-          return new Token(TokenType::INTEGER, str); // 然后直接返回
+          return D_Token(new Token(TokenType::INTEGER, str)); // 然后直接返回
         }
         if (d == '.') isFloat = true;
         str += d;
@@ -117,21 +113,16 @@ Token* Token::getDouble(istream& is) {
       } else {
         // js 中可以不区分int或者float 但是这里可以简单区分一下
         is.putback(d);
-        // if (isFloat) return Token(TokenType::DOUBLE, str);
-        if (isFloat) return new Token(TokenType::DOUBLE, str);
-        // return Token(TokenType::INTEGER, str);
-        return new Token(TokenType::INTEGER, str);
+        if (isFloat) return D_Token(new Token(TokenType::DOUBLE, str));
+        return D_Token(new Token(TokenType::INTEGER, str));
       }
     }
   }
 
-  // string errMsg("getDouble中传进来一个非number的字符 ");
-  // string errD(d);
-  // Utils::panic(errMsg + errD);
   Utils::panic("getDouble中传进来一个非number的字符 ");
 }
 
-Token* Token::getString(istream& is) {
+D_Token Token::getString(istream& is) {
   string str("");
   char quotationMarks = is.get(); // quotationMarks是引号的意思 应该是 " 或 ' 或 `
   str += quotationMarks;
@@ -141,8 +132,7 @@ Token* Token::getString(istream& is) {
     if (c == '\\') { cout << "nnnnn" << endl; }
     if (c == quotationMarks) {
       str += c;
-      return new Token(TokenType::STRING, str);
-      // return Token(TokenType::STRING, str);
+      return D_Token(new Token(TokenType::STRING, str));
     };
     str += c;
   }
@@ -150,104 +140,82 @@ Token* Token::getString(istream& is) {
   Utils::panic("获取字符串这块儿报错了");
 }
 
-Token* Token::getOperator(istream& is) {
+D_Token Token::getOperator(istream& is) {
   char c = is.get();
   string str("");
   str += c;
   if (c == '+') {
     if (is.peek() == '=') {
       c = is.get();
-      // return Token(TokenType::OPERATOR, "+=");
-      return new Token(TokenType::OPERATOR, "+=");
+      return D_Token(new Token(TokenType::OPERATOR, "+="));
     } else if (is.peek() == '+') {
       c = is.get();
-      // return Token(TokenType::OPERATOR, "++");
-      return new Token(TokenType::OPERATOR, "++");
+      return D_Token(new Token(TokenType::OPERATOR, "++"));
     } else {
       // c = is.get();
-      // return Token(TokenType::OPERATOR, "+");
-      return new Token(TokenType::OPERATOR, "+");
+      return D_Token(new Token(TokenType::OPERATOR, "+"));
     }
   } else if (c == '-') {
     if (is.peek() == '=') {
       c = is.get();
-      // return Token(TokenType::OPERATOR, "-=");
-      return new Token(TokenType::OPERATOR, "-=");
+      return D_Token(new Token(TokenType::OPERATOR, "-="));
     } else if (is.peek() == '-') {
       c = is.get();
-      // return Token(TokenType::OPERATOR, "--");
-      return new Token(TokenType::OPERATOR, "--");
+      return D_Token(new Token(TokenType::OPERATOR, "--"));
     } else {
-      // return Token(TokenType::OPERATOR, "-");
-      return new Token(TokenType::OPERATOR, "-");
+      return D_Token(new Token(TokenType::OPERATOR, "-"));
     }
   } else if (c == '*') {
     if (is.peek() == '=') {
       c = is.get();
-      // return Token(TokenType::OPERATOR, "*=");
-      return new Token(TokenType::OPERATOR, "*=");
+      return D_Token(new Token(TokenType::OPERATOR, "*="));
     } else if (is.peek() == '*') {
       c = is.get();
-      // return Token(TokenType::OPERATOR, "**"); // 取平方
-      return new Token(TokenType::OPERATOR, "**"); // 取平方
+      return D_Token(new Token(TokenType::OPERATOR, "**")); // 取平方
     } else {
-      // return Token(TokenType::OPERATOR, "*");
-      return new Token(TokenType::OPERATOR, "*");
+      return D_Token(new Token(TokenType::OPERATOR, "*"));
     }
   } else if (c == '/') {
     if (is.peek() == '=') {
       c = is.get();
-      // return Token(TokenType::OPERATOR, "/=");
-      return new Token(TokenType::OPERATOR, "/=");
+      return D_Token(new Token(TokenType::OPERATOR, "/="));
     } else {
-      // return Token(TokenType::OPERATOR, "/");
-      return new Token(TokenType::OPERATOR, "/");
+      return D_Token(new Token(TokenType::OPERATOR, "/"));
     }
   } else if (c == '%') {
     if (is.peek() == '=') {
       c = is.get();
-      // return Token(TokenType::OPERATOR, "%=");
-      return new Token(TokenType::OPERATOR, "%=");
+      return D_Token(new Token(TokenType::OPERATOR, "%="));
     } else {
-      // return Token(TokenType::OPERATOR, "%");
-      return new Token(TokenType::OPERATOR, "%");
+      return D_Token(new Token(TokenType::OPERATOR, "%"));
     }
   } else if (c == '~') {
-    // return Token(TokenType::OPERATOR, "~");
-    return new Token(TokenType::OPERATOR, "~");
+    return D_Token(new Token(TokenType::OPERATOR, "~"));
   } else if (c == '|') {
     if (is.peek() == '|') {
       c = is.get();
-      // return Token(TokenType::OPERATOR, "||");
-      return new Token(TokenType::OPERATOR, "||");
+      return D_Token(new Token(TokenType::OPERATOR, "||"));
     }
-    // return Token(TokenType::OPERATOR, "|"); 
-    return new Token(TokenType::OPERATOR, "|");
+    return D_Token(new Token(TokenType::OPERATOR, "|"));
   } else if (c == '&') {
     if (is.peek() == '&') {
       c = is.get();
-      // return Token(TokenType::OPERATOR, "&&");
-      return new Token(TokenType::OPERATOR, "&&");
+      return D_Token(new Token(TokenType::OPERATOR, "&&"));
     }
-    // return Token(TokenType::OPERATOR, "&"); 
-    return new Token(TokenType::OPERATOR, "&");
+    return D_Token(new Token(TokenType::OPERATOR, "&"));
   } else if (c == '!') {
     if (is.peek() == '=') {
       c = is.get();
       c = is.peek();
       if (c == '=') {
-        // return Token(TokenType::OPERATOR, "!==");
-        return new Token(TokenType::OPERATOR, "!==");
+        return D_Token(new Token(TokenType::OPERATOR, "!=="));
       }
-      // return Token(TokenType::OPERATOR, "!=");
-      return new Token(TokenType::OPERATOR, "!=");
+      return D_Token(new Token(TokenType::OPERATOR, "!="));
     } else if (is.peek() == '!') {
       c = is.get();
-      // return Token(TokenType::OPERATOR, "!!");
-      return new Token(TokenType::OPERATOR, "!!");
+      return D_Token(new Token(TokenType::OPERATOR, "!!"));
     } else {
-      // return Token(TokenType::OPERATOR, "!");
-      return new Token(TokenType::OPERATOR, "!");
+      return D_Token(new Token(TokenType::OPERATOR, "!"));
     }
   } else if (c == '=') {
     if (is.peek() == '=') {
@@ -255,54 +223,39 @@ Token* Token::getOperator(istream& is) {
       c = is.peek();
       if (c == '=') {
         c = is.get();
-        // return Token(TokenType::OPERATOR, "===");
-        return new Token(TokenType::OPERATOR, "===");
+        return D_Token(new Token(TokenType::OPERATOR, "==="));
       }
-      // return Token(TokenType::OPERATOR, "==");
-      return new Token(TokenType::OPERATOR, "==");
+      return D_Token(new Token(TokenType::OPERATOR, "=="));
     }
-    // return Token(TokenType::OPERATOR, "=");
-    return new Token(TokenType::OPERATOR, "=");
+    return D_Token(new Token(TokenType::OPERATOR, "="));
   } else if (c == '>') {
     if (is.peek() == '=') {
       c = is.get();
-      // return Token(TokenType::OPERATOR, ">=");
-      return new  Token(TokenType::OPERATOR, ">=");
+      return D_Token(new  Token(TokenType::OPERATOR, ">="));
     }
-    // return Token(TokenType::OPERATOR, ">");
-    return new Token(TokenType::OPERATOR, ">");
+    return D_Token(new Token(TokenType::OPERATOR, ">"));
   } else if (c == '<') {
     if (is.peek() == '=') {
       c = is.get();
-      // return Token(TokenType::OPERATOR, "<=");
-      return new Token(TokenType::OPERATOR, "<=");
+      return D_Token(new Token(TokenType::OPERATOR, "<="));
     }
-    // return Token(TokenType::OPERATOR, "<");
-    return new Token(TokenType::OPERATOR, "<");
+    return D_Token(new Token(TokenType::OPERATOR, "<"));
   } else if (c == '[') {
-    // return Token(TokenType::OPERATOR, "[");
-    return new Token(TokenType::OPERATOR, "[");
+    return D_Token(new Token(TokenType::OPERATOR, "["));
   } else if (c == ']') {
-    // return Token(TokenType::OPERATOR, "]");
-    return new Token(TokenType::OPERATOR, "]");
+    return D_Token(new Token(TokenType::OPERATOR, "]"));
   } else if (c == '{') {
-    // return Token(TokenType::OPERATOR, "{");
-    return new Token(TokenType::OPERATOR, "{");
+    return D_Token(new Token(TokenType::OPERATOR, "{"));
   } else if (c == '}') {
-    // return Token(TokenType::OPERATOR, "}");
-    return new Token(TokenType::OPERATOR, "}");
+    return D_Token(new Token(TokenType::OPERATOR, "}"));
   } else if (c == '(') {
-    // return Token(TokenType::OPERATOR, "(");
-    return new Token(TokenType::OPERATOR, "(");
+    return D_Token(new Token(TokenType::OPERATOR, "("));
   } else if (c == ')') {
-    // return Token(TokenType::OPERATOR, ")");
-    return new Token(TokenType::OPERATOR, ")");
+    return D_Token(new Token(TokenType::OPERATOR, ")"));
   } else if (c == ',') {
-    // return Token(TokenType::OPERATOR, ",");
-    return new Token(TokenType::OPERATOR, ",");
+    return D_Token(new Token(TokenType::OPERATOR, ","));
   } else if (c == ';') {
-    // return Token(TokenType::OPERATOR, ";");
-    return new Token(TokenType::OPERATOR, ";");
+    return D_Token(new Token(TokenType::OPERATOR, ";"));
   }
 
   Utils::panic("获取Operator时候出错了 检查getOperator");

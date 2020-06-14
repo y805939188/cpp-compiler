@@ -7,5 +7,5 @@ using namespace std;
 
 class Lexer {
   public:
-    static deque<Token*> analyse(istream& source);
+    static deque<shared_ptr<Token> > analyse(istream& source);
 };
